@@ -1,0 +1,251 @@
+<template name="historicalStatsSection">
+
+    <section class="content">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header gradientbg">Estadisticas Historicas</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="filterbox">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3">
+                            <p>Desde:</p>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" class="form-control" value="25-01-2016" id="datepicker-from-community">
+                            </div>
+                        </div><!-- /.col-xs-3 -->
+                        <div class="col-md-3 col-lg-3">
+                            <p>Hasta:</p>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" class="form-control" value="25-02-2016" id="datepicker-to-community">
+                            </div>
+                        </div><!-- /.col-xs-3 -->
+                        <div class="col-md-1">
+                            <p class="hidden-xs">&nbsp;</p>
+                            <p style="text-align: center; margin: 0px 0px 5px 0px"><button class="btn btn-default update-date-btn" id="update-date-community" section-name="community">Actualizar</button></p>
+                        </div><!-- /.col-xs-1 -->
+
+                        <div class="col-md-3 col-md-offset-2">
+                            <p>Redes:</p>
+                            <p class="socialicons" style="margin-bottom: 25px;">
+                                <a href="#" class="community-networks" network="twitter"><i class="fa fa-twitter-square color"></i></a>
+                                <a href="#" class="community-networks" network="facebook"><i class="fa fa-facebook-official"></i></a>
+                                <a href="#" class="community-networks" network="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="community-networks" network="linkedin"><i class="fa fa-linkedin-square"></i></a>
+                            </p>
+                            <div class="clearfix"></div>
+
+                        </div><!-- /.col-xs-3 -->
+
+                    </div><!-- /.row -->
+                </div><!-- /.filterbox -->
+                
+            </div><!-- /.col-xs-12 -->
+        </div><!-- /.row filtro-fecha -->
+
+
+        <!-- TWITTER -->
+
+        <!-- TWITTER -->
+        <div class="row historical-info" id="historical-twitter">
+            <div class="col-md-12 col-lg-8">
+                <div class="row social-statistics">
+                    <div class="col-sm-4">
+                        <p>
+                            <i class="fa fa-twitter"></i> <span id="historical-chart-statuses">552</span> Tweets total
+                        </p>
+                    </div><!-- /.col-sm-4 -->
+                    <div class="col-sm-4">
+                        <p>
+                            <i class="fa fa-users"></i> <span id="historical-chart-followers">24</span> Followers total
+                        </p>
+                    </div><!-- /.col-sm-4 -->
+                    <div class="col-sm-4">
+                        <p>
+                            <i class="fa fa-star"></i> <span id="historical-chart-favorites">55</span> Favs total
+                        </p>
+                    </div><!-- /.col-sm-4 -->
+                </div><!-- /.row -->
+                <div class="chat-panel panel panel-default">
+                    <div class="panel-body">
+
+                        <div style="height:300px;"></div>
+                        <!-- <div id="morris-area-chart"></div> -->
+
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div><!-- /.col-xs-8 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="row">
+                    <div class="col-xs-12 stats-twitter">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>Twitter</h2><!-- /.social tw -->
+                            </div><!-- /.col-xs-12 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="chartbox sm single-number">
+                                    <p class="sm"><i class="fa fa-users"></i> +<span id="data-historical-followers">24</span> | +<span id="data-historical-following">5</span></p>
+                                    <h3>Seguidores | Seguidos</h3>
+                                </div><!-- /.chartbox -->
+                            </div><!-- /.col-xs-6 -->
+                            <div class="col-xs-6">
+                                <div class="chartbox sm single-number">
+                                    <p class="sm"><i class="fa fa-star"></i> +<span id="data-historical-favs">55</span></p>
+                                    <h3>Favs</h3>
+                                </div><!-- /.chartbox -->
+
+                            </div><!-- /.col-xs-6 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="chartbox sm single-number" style="margin-bottom: 20px;">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <p><i class="fa fa-twitter"></i> +<span id="data-historical-tweets">552</span></p>
+                                            <h3>Tweets</h3>
+                                        </div><!-- /.col-xs-6 -->
+                                        <div class="col-xs-6">
+                                            <p><i class="fa fa-list"></i> +<span id="data-historical-listed">12</span></p>
+                                            <h3>Listas</h3>
+                                        </div><!-- /.col-xs-6 -->
+
+                                    </div><!-- /.row -->
+                                </div><!-- /.chartbox -->
+                            </div><!-- /.col-xs-6 -->
+                        </div><!-- /.row -->
+                    </div><!-- /.col-xs-4 -->
+                    
+                </div><!-- /.row -->
+
+            </div><!-- /.col-xs-4 -->
+
+            <div class="col-md-6 col-lg-3">
+                <div class="row visible-md">
+                    <div class="col-xs-12">
+                        <h2>&nbsp;</h2><!-- /.social tw -->
+                    </div><!-- /.col-xs-12 -->
+                </div><!-- /.row -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="chartbox sm single-number day-time">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p class="icon"><i class="fa fa-calendar"></i></p>
+                                </div><!-- /.col-xs-4 -->
+                                <div class="col-xs-8">
+                                    <p id="data-historical-bestday">Miércoles</p>
+                                    <h3>Mejor día para publicar</h3>
+                                </div><!-- /.col-xs-8 -->
+                            </div><!-- /.row -->
+                        </div><!-- /.chartbox -->
+                    </div><!-- /.col-xs-12 -->
+                </div><!-- /.row -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="chartbox sm single-number day-time" style="margin-bottom: 20px;">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p class="icon"><i class="fa fa-clock-o"></i></p>
+                                </div><!-- /.col-xs-4 -->
+                                <div class="col-xs-8">
+                                    <p id="data-historical-besthour">21:00</p>
+                                    <h3>Mejor hora para publicar</h3>
+                                </div><!-- /.col-xs-8 -->
+                            </div><!-- /.row -->
+                        </div><!-- /.chartbox -->
+                    </div><!-- /.col-xs-12 -->
+                    
+                </div><!-- /.row -->
+
+            </div><!-- /.col-xs-3 -->
+
+            <div class="col-md-4 col-lg-3">
+                <div class="chartbox profile interestbox">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 class="page-header gradientbg">Top Hashtags</h3>
+                        </div><!-- /.col-xs-12 -->
+                    </div><!-- /.row -->
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="row" id="historical-hashtags-cont">
+                                <div class="col-xs-12"><p>1 - #MañanaEsLunes</p></div>
+                                <div class="col-xs-12"><p>2 - #hola</p></div>
+                                <div class="col-xs-12"><p>3 - #FF</p></div>
+                                <div class="col-xs-12"><p>4 - #SuperMartes</p></div>
+                                <div class="col-xs-12"><p>5 - #JuanHashtag</p></div>
+                            </div><!-- /.row -->
+
+
+                        </div><!-- /.col-xs-8 col-xs-offset-2 -->
+
+                    </div><!-- /.row -->
+                </div><!-- /.chartbox -->
+                <!-- /.panel -->
+            </div><!-- /.col-sm-6 -->
+
+            <div class="col-md-4 col-lg-3">
+                <div class="chartbox profile interestbox interestbrands">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 class="page-header gradientbg">Top Marcas</h3>
+                        </div><!-- /.col-xs-12 -->
+                    </div><!-- /.row -->
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="row" id="historical-brands-cont">
+                                <div class="col-xs-12"><p>1 - Samsung</p></div>
+                                <div class="col-xs-12"><p>2 - Nintendo</p></div>
+                                <div class="col-xs-12"><p>3 - Nescafé</p></div>
+                                <div class="col-xs-12"><p>4 - Nokia</p></div>
+                                <div class="col-xs-12"><p>5 - Microsoft</p></div>
+                            </div><!-- /.row -->
+                        </div><!-- /.col-xs-8 col-xs-offset-2 -->
+
+                    </div><!-- /.row -->
+                </div><!-- /.chartbox -->
+                <!-- /.panel -->
+            </div><!-- /.col-sm-6 -->
+
+            <div class="col-md-4 col-lg-3">
+                <div class="chartbox profile">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3 class="page-header gradientbg">Nube de palabras</h3>
+                            </div><!-- /.col-xs-12 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div id="theCloud" class="theCloud"></div><!-- /#theCloud.theCloud -->
+                            
+                        </div><!-- /.row -->
+                        
+                    </div><!-- /.col-xs-12 -->
+                </div>
+            </div>
+
+        </div><!-- /.row -->
+
+        <!-- END TWITTER -->
+        <div class="row">
+            <div class="col-xs-12">
+                <hr class="gradientbg" />
+            </div><!-- /.col-xs-12 -->
+        </div>
+
+    </section>
+
+</template>
