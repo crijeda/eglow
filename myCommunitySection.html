@@ -30,7 +30,7 @@
 	        			</div><!-- /.col-xs-3 -->
 	        			<div class="col-md-1">
 	        				<p class="hidden-xs">&nbsp;</p>
-	        				<p style="text-align: center; margin: 0px 0px 5px 0px"><button class="btn btn-default update-date-btn twconnectCommunity" id="update-date-community" section-name="community">Actualizar</button></p>
+	        				<p style="text-align: center; margin: 0px 0px 5px 0px"><button class="btn btn-default update-date-btn" id="update-date-community" section-name="community">Actualizar</button></p>
 	        			</div><!-- /.col-xs-1 -->
 
 	        			<div class="col-md-3 col-md-offset-2">
@@ -91,7 +91,7 @@
 		        		<div class="row">
 				        	<div class="col-xs-12">
 				        		<div class="chartbox sm single-number">
-				        			<p><i class="fa fa-retweet"></i> <span id="data-community-retweets">{{ datatwitter.profilecommunity.[0].QtyRetweetsFromCommunity}}</span></p>
+				        			<p><i class="fa fa-retweet"></i> <span id="data-community-retweets">15.000</span></p>
 				        			<h3>RTs</h3>
 				        		</div><!-- /.chartbox -->
 				        	</div><!-- /.col-xs-6 -->
@@ -101,16 +101,16 @@
 				        		<div class="chartbox sm single-number">
 				        			<div class="row">
 				        				<div class="col-xs-6">
-						        			<p><i class="fa fa-twitter"></i> <span id="data-community-mentions">{{datatwitter.profilecommunity.[0].QtyMentionsFromCommunity}}</span></p>
+						        			<p><i class="fa fa-twitter"></i> <span id="data-community-mentions">12.987</span></p>
 						        			<h3>Menciones</h3>
 				        				</div><!-- /.col-xs-6 -->
 				        				<div class="col-xs-6 mediabox">
 				        					<div class="row">
 				        						<div class="col-xs-12">
-				        							<p><i class="fa fa-picture-o"></i> <span id="data-community-images">{{datatwitter.profilecommunity.[0].ImagesFromCommunity}}</span></p>
+				        							<p><i class="fa fa-picture-o"></i> <span id="data-community-images">665</span></p>
 				        						</div><!-- /.col-xs-12 -->
 				        						<div class="col-xs-12">
-				        							<p><i class="fa fa-film"></i> <span id="data-community-videos">{{datatwitter.profilecommunity.[0].VideosFromCommunity}}</span></p>
+				        							<p><i class="fa fa-film"></i> <span id="data-community-videos">428</span></p>
 				        						</div><!-- /.col-xs-12 -->
                                             </div><!-- /.row -->
                                             
@@ -270,11 +270,11 @@
 		        		<div class="row">
 				        	<div class="col-xs-12">
 				        		<div class="chartbox sm single-number division-bar">
-				        			<p><i class="fa fa-male"></i> <span id="data-community-male">{{datatwitter.profilecommunity.[0].GenderDistribution.[0].Male}}</span> | <span id="data-community-female">{{datatwitter.profilecommunity.[0].GenderDistribution.[0].Female}}</span> <i class="fa fa-female"></i></p>
+				        			<p><i class="fa fa-male"></i> <span id="data-community-male">12.222</span> | <span id="data-community-female">36.998</span> <i class="fa fa-female"></i></p>
 				        			<div class="progresscontainer">
-					        			<div class="progress progress-striped active" id="data-male-percent" style="width: {{percentmale}}%;">
+					        			<div class="progress progress-striped active" id="data-male-percent" style="width: 38%;">
 	                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-	                                    </div><div class="progress progress-striped active" id="data-female-percent" style="width: {{percentfemale}}%;">
+	                                    </div><div class="progress progress-striped active" id="data-female-percent" style="width: 58%;">
 	                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
 	                                    </div>
 				        			</div>
