@@ -3,7 +3,7 @@ Meteor.methods({
         var url = 'http://52.38.7.218/digirepWebService/TwitterWebService.svc?wsdl';
         // var profile = Profile.find({userId:Meteor.userId()}).fetch();
 		var screenname = Meteor.user().services.twitter.screenName;
-		var args = {screenname: screenname, dateFrom: '2016-03-25T00:00:00', dateTo: '2015-03-29T00:00:00'};
+		var args = {screenname: screenname, dateFrom: '2016-03-01T00:00:00', dateTo: '2016-03-31T00:00:00'};
 
 			try {
 
@@ -18,7 +18,7 @@ Meteor.methods({
 
 			  var data = obj.CommunityStatistics[0];
 			  var data2 = obj2[0];
-			  console.log(data2.GenderDistribution);
+			  // console.log(data2);
 			  DataTwitter.update(twid[0]._id, {
 		        $set: {profilecommunity:[{QtyFollowersFromCommunity:data.QtyFollowersFromCommunity, 
 		        	QtyFollowingFromCommunity:data.QtyFollowingFromCommunity, 
@@ -27,7 +27,11 @@ Meteor.methods({
 		        	VideosFromCommunity:data.VideosFromCommunity,
 		        	MusicFromCommunity:data.MusicFromCommunity,
 		        	QtyRetweetsFromCommunity:data.QtyRetweetsFromCommunity,
-		        	GenderDistribution:data2.GenderDistribution
+		        	GenderDistribution:data2.GenderDistribution,
+		        	TopTenFollowers:data2.TopTenFollowers,
+		        	Top10Brands:data2.Top10Brands,
+		        	Top10Hashtags:data2.Top10Hashtags,
+		        	Professions:data2.Professions,
 
 		        }]}
 		      });

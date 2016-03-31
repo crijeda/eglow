@@ -80,6 +80,30 @@ Template.twitterCommunity.helpers({
         var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
         return datatwitter[0]
     },
+    totalgender: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        // var twitteraccount = profile[0].twitteracccount;
+        var screenname = Meteor.user().services.twitter.screenName;
+        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
+        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var totalgender = female + male;
+        return totalgender
+    },
+    percentgender: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        // var twitteraccount = profile[0].twitteracccount;
+        var screenname = Meteor.user().services.twitter.screenName;
+        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+        var followers = datatwitter[0].profilestatistics[0].qtyfollowers;
+        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
+        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var percentgender = (female + male)/followers;
+        var percentgender = Math.round(percentgender * 100);
+        return percentgender
+    },
     percentmale: function () {
 
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
