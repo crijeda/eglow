@@ -20,9 +20,18 @@ if (Meteor.isClient) {
 
 Template.homeInfluencer.events({
 
+    'click .test': function (event) {
+         setTimeout(function(){
+            Modal.show('exampleModal')
+        })
+    },
     'click .sincTwitter': function (event) {
         event.preventDefault();
         Meteor.call('sincTwitter');
+    },
+      'click .sincInstagram': function (event) {
+        event.preventDefault();
+        Meteor.call('sincInstagram');
     },
     'click .instaconnect': function (event) {
         event.preventDefault();
@@ -39,8 +48,9 @@ Template.homeInfluencer.events({
                     var user2 = Meteor.users.find({_id:Meteor.userId()}).fetch();
                     var instagram = user2[0].services.instagram;
                      Meteor.users.update({_id:olduserid},
-                      { $set: {  "services" : { "instagram" : instagram, "twitter" : twitter }}});
-
+                      { $set: {  "services" : { "twitter": twitter, "instagram" : instagram }}});
+                    console.log(twitter);
+                    console.log(instagram);
                     Meteor.users.remove({_id:Meteor.userId()});
 
 

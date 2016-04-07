@@ -1,13 +1,14 @@
-/*
- * Function to draw the column chart
- */
 
-function builtColumn() {
-    
-    $('#container-column').highcharts({
+function builtLine(HistoricalData) {
+    responseDates = _.pluck(HistoricalData,'Date')
+
+    xAxisDates = _.map(responseDates,function(e){
+        return e.substring(8, 10) + "/" + e.substring(5, 7) + "/" +  e.substring(0, 4)
+    })
+    $('#container-line').highcharts({
         
         chart: {
-            type: 'column',
+            type: 'line',
             plotBackgroundColor: "#EEE"
         },
         
@@ -15,28 +16,15 @@ function builtColumn() {
             text: ''
         },
         
-        // subtitle: {
-        //     text: 'Source: WorldClimate.com'
-        // },
-        
         credits: {
             enabled: false
         },
         
         xAxis: {
-            categories: [
-                '13-18',
-                '19-24',
-                '25-30',
-                '31-35',
-                '36-40',
-                '41-50',
-                '50+',
-            ]
+            categories: xAxisDates,
         },
         
         yAxis: {
-            min: 0,
             title: {
                 text: ''
             }
@@ -52,21 +40,24 @@ function builtColumn() {
         },
         
         plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
             }
         },
         
         series: [{
-            name: 'Hombres',
+            name: 'Followers',
             color: '#5BC0DE',
-            data: [12, 15, 25, 27, 10, 6, 5]
+            // data: [12, 15, 25, 27, 10, 6, 5]
+            data: _.pluck(HistoricalData,'followers_count')
 
         }, {
-            name: 'Mujeres',
+            name: 'Favorites',
             color: '#D9534F',
-            data: [14, 22, 35, 29, 20, 4, 6]
+            data: _.pluck(HistoricalData,'favorites_count')
         }]
     });
 }
@@ -74,8 +65,12 @@ function builtColumn() {
 /*
  * Call the function to built the chart when the template is rendered
  */
-Template.columnDemo.rendered = function() {    
-    builtColumn();
+Template.lineDemo.rendered = function() {
+    var datatwitter = DataTwitter.find({screenname:Meteor.user().services.twitter.screenName}).fetch();
+
+    var HistoricalData = datatwitter[0].profileHistorical[0].HistoricalData;
+    builtLine(HistoricalData);
+
 }
 
 var basicChart = {

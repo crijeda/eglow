@@ -52,6 +52,16 @@ Template.myCommunitySection.events({
 
 });
 
+// Template.historicalStatsSection.events({
+
+//     'click .twconnectHistorical': function (event) {
+//         event.preventDefault();
+//         Meteor.call('sincTwitterHistorical');
+//         // console.log("Hello World");
+//     }
+
+// });
+
 
 
 Template.twitterCommunity.helpers({
@@ -137,3 +147,70 @@ Template.twitterCommunity.helpers({
     },
 
 });
+
+Template.twitterCommunity.pielocation = function() {
+
+     var profile = Profile.find({userId:Meteor.userId()}).fetch();
+     // var twitteraccount = profile[0].twitteracccount;
+     var screenname = Meteor.user().services.twitter.screenName;
+     var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+     var location = datatwitter[0].profilecommunity[0].LocationDistribution;
+     // 'external' data
+     var data = new Array();
+     var len = location.length;
+     
+    for (i = 0; i < len; i++) { 
+     data.push({
+        name: location[i].Location,
+        y: location[i].Qty,
+        color: '#c7c6c6'
+    });
+
+    }
+
+    return {
+        // chart: {
+        //     plotBackgroundColor: 'rgba(255, 255, 255, 0.1)',
+        //     plotBorderWidth: null,
+        //     plotShadow: false,
+        // },
+        chart:{
+            backgroundColor: "rgba(255, 255, 255, 0)",
+            plotBackgroundColor: "#EEE"
+        },
+        credits: {
+            enabled: false
+        },
+        title: {
+            text: ''
+        },
+        tooltip: {
+            pointFormat: '<b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                // allowPointSelect: true,
+                cursor: 'pointer',
+                center: ['50%', '20%'],
+                dataLabels: {
+                    enabled: true,
+                    // format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    // connectorColor: 'silver',
+                    distance: 50,
+                    style: {
+                        fontWeight: 'bold',
+                        // color: "#484848"
+                        color: 'white',
+                        textShadow: '0px 1px 2px black'
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'genre',
+            innerSize: '70%',
+            data:data
+        }]
+    };
+};

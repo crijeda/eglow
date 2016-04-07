@@ -25,7 +25,7 @@
 										<!-- {{profile.[0]._id}} -->
 										{{#autoForm id="profile1" doc=this type="update" collection="Profile"}}
 									  	<fieldset>
-									      <legend>Asigna el Material a una Tienda</legend>
+									      <legend></legend>
 									      {{> afQuickField name='firstname'}}
 									      {{> afQuickField name='lastname'}}
 									      {{> afQuickField name='rut' placeholder='Ej. 10122122-1'}}
@@ -36,8 +36,8 @@
 									      {{> afQuickField name='phone'}}
 									      {{> afQuickField name='address'}}
 									      {{> afQuickField name='bio'}}
-									  	  {{> afQuickField name='twitteracccount'}}
-									      {{> afQuickField name='instagramaccount'}}
+									 <!--  	  {{> afQuickField name='twitteracccount'}}
+									      {{> afQuickField name='instagramaccount'}} -->
 									      <span style="display: none">
 									      {{> afQuickField name='userId' value=user._id}} 
 									      </span>
@@ -50,7 +50,7 @@
 									    {{else}}
 									    {{#autoForm id="profile" type="insert" collection="Profile"}}
 									  	<fieldset>
-									      <legend>Asigna el Material a una Tienda</legend>
+									      <legend></legend>
 									      {{> afQuickField name='firstname'}}
 									      {{> afQuickField name='lastname'}}
 									      {{> afQuickField name='rut' placeholder='Ej. 10122122-1'}}
@@ -61,8 +61,8 @@
 									      {{> afQuickField name='phone'}}
 									      {{> afQuickField name='address'}}
 									      {{> afQuickField name='bio'}}
-									       {{> afQuickField name='twitteracccount'}}
-									      {{> afQuickField name='instagramaccount'}}
+									    <!--    {{> afQuickField name='twitteracccount'}}
+									      {{> afQuickField name='instagramaccount'}} -->
 									      <span style="display: none">
 									      {{> afQuickField name='userId' value=user._id}} 
 									      </span>
