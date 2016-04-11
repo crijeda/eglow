@@ -33,7 +33,7 @@
                             <p class="hidden-xs">&nbsp;</p>
                             <!-- <p style="text-align: center; margin: 0px 0px 5px 0px"><button class="btn btn-default update-date-btn" id="update-date-community" section-name="community">Actualizar</button></p> -->
 
-                            <p style="text-align: center; margin: 0px 0px 5px 0px"><button class="btn btn-default update-date-btn twconnectHistorical" id="update-date-historical" section-name="historical">Actualizar</button></p>
+                            <p style="text-align: center; margin: 0px 0px 5px 0px"><button class="btn btn-default update-date-btn connectHistorical" id="update-date-historical" section-name="historical">Actualizar</button></p>
                         </div><!-- /.col-xs-1 -->
 
                         <div class="col-md-3 col-md-offset-2">
@@ -350,7 +350,7 @@
                                     <p class="icon"><i class="fa fa-calendar"></i></p>
                                 </div><!-- /.col-xs-4 -->
                                 <div class="col-xs-8">
-                                    <p id="data-historical-bestday">{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p>
+                                    <p id="data-historical-bestday">{{dayinsta}}</p>
                                     <h3>Mejor día para publicar</h3>
                                 </div><!-- /.col-xs-8 -->
                             </div><!-- /.row -->
@@ -366,7 +366,7 @@
                                     <p class="icon"><i class="fa fa-clock-o"></i></p>
                                 </div><!-- /.col-xs-4 -->
                                 <div class="col-xs-8">
-                                    <p id="data-historical-besthour">{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p>
+                                    <p id="data-historical-besthour">{{hourinsta}}</p>
                                     <h3>Mejor hora para publicar</h3>
                                 </div><!-- /.col-xs-8 -->
                             </div><!-- /.row -->

@@ -30,7 +30,7 @@
 	        			</div><!-- /.col-xs-3 -->
 	        			<div class="col-md-1">
 	        				<p class="hidden-xs">&nbsp;</p>
-	        				<p style="text-align: center; margin: 0px 0px 5px 0px"><button class="btn btn-default update-date-btn twconnectCommunity" id="update-date-community" section-name="community">Actualizar</button></p>
+	        				<p style="text-align: center; margin: 0px 0px 5px 0px"><button class="btn btn-default update-date-btn connectCommunity " id="update-date-community" section-name="community">Actualizar</button></p>
 	        			</div><!-- /.col-xs-1 -->
 
 	        			<div class="col-md-3 col-md-offset-2">
@@ -347,7 +347,7 @@
 		        		<div class="row">
 				        	<div class="col-xs-12">
 				        		<div class="chartbox sm single-number">
-				        			<p><i class="fa fa-users"></i> <span id="data-community-retweets">{{ datatwitter.profilecommunity.[0].QtyRetweetsFromCommunity}}</span></p>
+				        			<p><i class="fa fa-users"></i> <span id="data-community-retweets">{{ datainstagram.profileCommunity.[0].QtyRetweetsFromCommunity}}</span></p>
 				        			<h3>Seguidores</h3>
 				        		</div><!-- /.chartbox -->
 				        	</div><!-- /.col-xs-6 -->
@@ -357,16 +357,16 @@
 				        		<div class="chartbox sm single-number">
 				        			<div class="row">
 				        				<div class="col-xs-6">
-						        			<p><i class="fa fa-heart"></i> <span id="data-community-mentions">{{datatwitter.profilecommunity.[0].QtyMentionsFromCommunity}}</span></p>
+						        			<p><i class="fa fa-heart"></i> <span id="data-community-mentions">{{datainstagram.profileCommunity.[0].QtyMentionsFromCommunity}}</span></p>
 						        			<h3>Me Gusta</h3>
 				        				</div><!-- /.col-xs-6 -->
 				        				<div class="col-xs-6 mediabox">
 				        					<div class="row">
 				        						<div class="col-xs-12">
-				        							<p><i class="fa fa-user"></i> <span id="data-community-images">{{datatwitter.profilecommunity.[0].ImagesFromCommunity}}</span></p>
+				        							<p><i class="fa fa-user"></i> <span id="data-community-images">{{datainstagram.profileCommunity.[0].ImagesFromCommunity}}</span></p>
 				        						</div><!-- /.col-xs-12 -->
 				        						<div class="col-xs-12">
-				        							<p><i class="fa fa-comments"></i> <span id="data-community-videos">{{datatwitter.profilecommunity.[0].VideosFromCommunity}}</span></p>
+				        							<p><i class="fa fa-comments"></i> <span id="data-community-videos">{{datainstagram.profileCommunity.[0].VideosFromCommunity}}</span></p>
 				        						</div><!-- /.col-xs-12 -->
                                             </div><!-- /.row -->
                                             
@@ -403,16 +403,16 @@
                     <div class="row">
                         <div class="col-xs-10 col-xs-offset-1">
                             <div class="row" id="community-brands-cont">
-                            	<div class="col-xs-6"><p>1 - {{datatwitter.profilecommunity.[0].Top10Brands.[0].Marca}}</p></div>
-                            	<div class="col-xs-6"><p>2 - {{datatwitter.profilecommunity.[0].Top10Brands.[1].Marca}}</p></div>
-                            	<div class="col-xs-6"><p>3 - {{datatwitter.profilecommunity.[0].Top10Brands.[2].Marca}}</p></div>
-                            	<div class="col-xs-6"><p>4 - {{datatwitter.profilecommunity.[0].Top10Brands.[3].Marca}}</p></div>
-                            	<div class="col-xs-6"><p>5 - {{datatwitter.profilecommunity.[0].Top10Brands.[4].Marca}}</p></div>
-                            	<div class="col-xs-6"><p>6 - {{datatwitter.profilecommunity.[0].Top10Brands.[5].Marca}}</p></div>
-                            	<div class="col-xs-6"><p>7 - {{datatwitter.profilecommunity.[0].Top10Brands.[6].Marca}}</p></div>
-                            	<div class="col-xs-6"><p>8 - {{datatwitter.profilecommunity.[0].Top10Brands.[7].Marca}}</p></div>
-                            	<div class="col-xs-6"><p>9 - {{datatwitter.profilecommunity.[0].Top10Brands.[8].Marca}}</p></div>
-                            	<div class="col-xs-6"><p>10 - {{datatwitter.profilecommunity.[0].Top10Brands.[9].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>1 - {{datainstagram.profileCommunity.[0].Top10Brands.[0].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>2 - {{datainstagram.profileCommunity.[0].Top10Brands.[1].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>3 - {{datainstagram.profileCommunity.[0].Top10Brands.[2].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>4 - {{datainstagram.profileCommunity.[0].Top10Brands.[3].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>5 - {{datainstagram.profileCommunity.[0].Top10Brands.[4].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>6 - {{datainstagram.profileCommunity.[0].Top10Brands.[5].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>7 - {{datainstagram.profileCommunity.[0].Top10Brands.[6].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>8 - {{datainstagram.profileCommunity.[0].Top10Brands.[7].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>9 - {{datainstagram.profileCommunity.[0].Top10Brands.[8].Marca}}</p></div>
+                            	<div class="col-xs-6"><p>10 - {{datainstagram.profileCommunity.[0].Top10Brands.[9].Marca}}</p></div>
                             </div><!-- /.row -->
                         </div><!-- /.col-xs-8 col-xs-offset-2 -->
 
@@ -437,16 +437,16 @@
                     <div class="row">
                         <div class="col-xs-10 col-xs-offset-1">
                             <div class="row" id="community-hashtags-cont">
-                            	<div class="col-xs-6"><p>1 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[0].Hashtag}}</p></div>
-                            	<div class="col-xs-6"><p>2 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[1].Hashtag}}</p></div>
-                            	<div class="col-xs-6"><p>3 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[2].Hashtag}}</p></div>
-                            	<div class="col-xs-6"><p>4 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[3].Hashtag}}</p></div>
-                            	<div class="col-xs-6"><p>5 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[4].Hashtag}}</p></div>
-                            	<div class="col-xs-6"><p>6 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[5].Hashtag}}</p></div>
-                            	<div class="col-xs-6"><p>7 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[6].Hashtag}}</p></div>
-                            	<div class="col-xs-6"><p>8 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[7].Hashtag}}</p></div>
-                            	<div class="col-xs-6"><p>9 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[8].Hashtag}}</p></div>
-                            	<div class="col-xs-6"><p>10 - {{datatwitter.profilecommunity.[0].Top10Hashtags.[9].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>1 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[0].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>2 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[1].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>3 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[2].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>4 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[3].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>5 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[4].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>6 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[5].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>7 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[6].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>8 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[7].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>9 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[8].Hashtag}}</p></div>
+                            	<div class="col-xs-6"><p>10 - {{datainstagram.profileCommunity.[0].Top10Hashtags.[9].Hashtag}}</p></div>
                             </div><!-- /.row -->
                         </div><!-- /.col-xs-8 col-xs-offset-2 -->
 

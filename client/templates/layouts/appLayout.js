@@ -104,7 +104,7 @@ Template.appLayout.helpers({
     
     user: function () {
 
-        var user = Meteor.users.find().fetch();
+        var user = Meteor.users.find({userId:Meteor.userId()}).fetch();
         return user[0]
     },
     role: function () {
@@ -133,7 +133,7 @@ Template._influencerSidebar.helpers({
 
     user: function () {
 
-        var user = Meteor.users.find().fetch();
+        var user = Meteor.users.find({userId:Meteor.userId()}).fetch();
         return user[0]
     },
     userId: function () {
@@ -149,7 +149,7 @@ Template._influencerSidebar.helpers({
     },
     profileimage: function () {
 
-        var user = Meteor.users.find().fetch();
+        var user = Meteor.users.find({userId:Meteor.userId()}).fetch();
         var profileimage = Meteor.user().services.twitter.profile_image_url;
 
         if (profileimage.indexOf("jpg") > 0) {

@@ -50,6 +50,7 @@ cfs:worker@0.1.4
 check@1.1.0
 cmather:handlebars-server@0.2.0
 coffeescript@1.0.11
+d3@1.0.0
 dburles:collection-helpers@1.0.4
 dburles:factory@0.4.2
 ddp@1.2.2
@@ -60,6 +61,7 @@ ddp-server@1.2.2
 deps@1.0.9
 dhtmlx:scheduler@0.0.2
 diff-sequence@1.0.1
+dsyko:d3-cloud@1.0.6
 ecmascript@0.1.6
 ecmascript-runtime@0.2.6
 ejson@1.0.7

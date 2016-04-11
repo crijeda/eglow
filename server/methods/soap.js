@@ -51,6 +51,75 @@ Meteor.methods({
 		}
     },
 
+    'sincInstagramCommunity': function(){
+    	console.log("inside");
+        var url = 'http://52.38.21.30/DigiRepWebservice/InstagramService.svc?wsdl';
+        // var profile = Profile.find({userId:Meteor.userId()}).fetch();
+		var screenname = Meteor.user().services.instagram.username;
+		var args = {username: screenname, dateFrom: '2016-03-01T00:00:00', dateTo: '2016-03-31T00:00:00'};
+
+		try {
+
+		  var client = Soap.createClient(url);
+		  var result = client.GetProfileCommunity(args);
+		  var result2 = result.GetProfileCommunityResult;
+
+		  var instad = DataInstagram.find({screenname: screenname}).fetch();
+
+		  //var obj = eval ("(" + result2 + ")");
+		  var obj2 = eval ("[" + result2 + "]");
+
+		  //var data = obj.CommunityStatistics[0];
+		  var data2 = obj2[0];
+		  console.log(data2);
+		  console.log(instad[0]._id);
+		  DataInstagram.update(instad[0]._id, {
+	        $set: {
+
+	        	profileCommunity:
+	        	[
+	        		{
+	        			QtyUsersFromCommunity:data2.ProfileCommunity[0].QtyUsersFromCommunity,
+	        			
+	        			QtyFeedsFromCommunity:data2.Table1[0].QtyFeedsFromCommunity,
+	        			
+	        			QtyFollowersFromCommunity:data2.Table2[0].QtyFollowersFromCommunity,
+	        			QtyFollowingFromCommunity:data2.Table2[0].QtyFollowingFromCommunity,
+	        			QtyMentionsFromCommunity:data2.Table2[0].QtyMentionsFromCommunity,
+	        			ImagesFromCommunity:data2.Table2[0].ImagesFromCommunity,
+	        			VideosFromCommunity:data2.Table2[0].VideosFromCommunity,
+	        			MusicFromCommunity:data2.Table2[0].MusicFromCommunity,
+
+			        	Top10Brands:data2.Table3,
+			        	
+			        	Top10Hashtags:data2.Table4,
+			        	
+			        	TopTenFollowers:data2.Table5,
+
+			        	GenderDistribution:data2.Table6,
+
+			        	Professions:data2.Table8,
+
+
+	        		}
+	        	]
+	    	}
+	      });
+	        // DataTwitter.update(twid[0]._id, { $push: { GenderDistribution: data2.GenderDistribution }});
+			
+			console.log("Instagram Community Statistics Synchronization success");
+		}
+		catch (err) {
+		  if(err.error === 'soap-creation') {
+		    console.log('SOAP Client creation failed');
+		  }
+		  else if (err.error === 'soap-method') {
+		    console.log('SOAP Method call failed');
+		  }
+
+		}
+    },
+
     'sincTwitterHistorical': function(){
         var url = 'http://52.38.7.218/digirepWebService/TwitterWebService.svc?wsdl';
         // var profile = Profile.find({userId:Meteor.userId()}).fetch();
@@ -101,6 +170,55 @@ Meteor.methods({
 
 		}
     },
+
+    'sincInstagramHistorical': function(){
+        var url = 'http://52.38.21.30/DigiRepWebservice/InstagramService.svc?wsdl'
+        // var profile = Profile.find({userId:Meteor.userId()}).fetch();
+		var screenname = Meteor.user().services.instagram.username;
+		var args = {username: screenname, dateFrom: '2016-03-01T00:00:00', dateTo: '2016-03-31T00:00:00'};
+
+		try {
+
+		  var client = Soap.createClient(url);
+		  var result = client.GetProfileHistoricalStatistics(args);
+		  var result2 = result.GetProfileHistoricalStatisticsResult;
+
+		  var instad = DataInstagram.find({screenname: screenname}).fetch();
+
+		  //var obj = eval ("(" + result2 + ")");
+		  var obj2 = eval ("[" + result2 + "]");
+
+		  //var data = obj.CommunityStatistics[0];
+		  var data2 = obj2[0];
+		  //console.log(data2);
+			DataInstagram.update(instad[0]._id, {
+				$set: {
+					profileHistorical:[
+						{
+							
+							HistoricalData:data2.ProfileHistoricalStatistics,
+							WordCloud:data2.Table2,
+							LastPosts:data2.Table4,
+							BestDayAndHour:data2.Table5,
+
+						}
+					]
+				}
+			});
+			console.log(obj2)
+			//console.log("CommunityStatistics success Synchronization");
+		}
+		catch (err) {
+		  if(err.error === 'soap-creation') {
+		    console.log('SOAP Client creation failed');
+		  }
+		  else if (err.error === 'soap-method') {
+		    console.log('SOAP Method call failed');
+		  }
+
+		}
+    },
+
     'sincTwitter': function(){
         var url = 'http://52.38.7.218/digirepWebService/TwitterWebService.svc?wsdl';
         // var profile = Profile.find({userId:Meteor.userId()}).fetch();
@@ -200,7 +318,7 @@ Meteor.methods({
 
 			}
     },
-        'sincInstagram': function(){
+    'sincInstagram': function(){
         var url = 'http://52.38.21.30/DigiRepWebservice/InstagramService.svc?wsdl';
         // var user = Meteor.users.find().fetch();
         var screenname = Meteor.user().services.instagram.username;

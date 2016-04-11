@@ -44,9 +44,19 @@ Template.myCommunitySection.events({
       );
         
     },
-    'click .twconnectCommunity': function (event) {
+    'click .connectCommunity': function (event) {
         event.preventDefault();
-        Meteor.call('sincTwitterCommunity');
+        var tw = Meteor.user().services.twitter;
+        if(tw){
+            Meteor.call('sincTwitterCommunity');
+        }
+        var insta = Meteor.user().services.instagram;
+        if(insta){
+            Meteor.call('sincInstagramCommunity');
+        }
+        
+        // if ()
+        // Meteor.call('sincTwitterCommunity');
         // console.log("Hello World");
     }
 
@@ -65,6 +75,89 @@ Template.myCommunitySection.events({
 
 
 Template.twitterCommunity.helpers({
+
+    user: function () {
+
+        var user = Meteor.users.find().fetch();
+        return user[0]
+    },
+
+    profile: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        return profile[0]
+    },
+    screenname2: function () {
+
+        var screenname = user[0].services.twitter.screenName;
+        return screenname;
+    },
+    datatwitter: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        // var twitteraccount = profile[0].twitteracccount;
+        var screenname = Meteor.user().services.twitter.screenName;
+        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+        return datatwitter[0]
+    },
+    totalgender: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        // var twitteraccount = profile[0].twitteracccount;
+        var screenname = Meteor.user().services.twitter.screenName;
+        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
+        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var totalgender = female + male;
+        return totalgender
+    },
+    percentgender: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        // var twitteraccount = profile[0].twitteracccount;
+        var screenname = Meteor.user().services.twitter.screenName;
+        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+        var followers = datatwitter[0].profilestatistics[0].qtyfollowers;
+        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
+        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var percentgender = (female + male)/followers;
+        var percentgender = Math.round(percentgender * 100);
+        return percentgender
+    },
+    percentmale: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        // var twitteraccount = profile[0].twitteracccount;
+        var screenname = Meteor.user().services.twitter.screenName;
+        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
+        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var percentmale = male/(male+female);
+        var percentmale = Math.round(percentmale * 100);
+        return percentmale
+    },
+    percentfemale: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        // var twitteraccount = profile[0].twitteracccount;
+        var screenname = Meteor.user().services.twitter.screenName;
+        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
+        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var percentfemale = female/(male+female);
+        var percentfemale = Math.round(percentfemale * 100);
+        return percentfemale
+    },
+    datainstagram: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        var screenname = Meteor.user().services.instagram.username;
+        var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
+        return datainstagram[0]
+    },
+
+});
+Template.instagramCommunity.helpers({
 
     user: function () {
 

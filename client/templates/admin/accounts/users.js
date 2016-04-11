@@ -1,4 +1,4 @@
-Template.users.rendered = function() {
+    Template.users.rendered = function() {
 
 };
 
@@ -78,7 +78,7 @@ Template.login.events({
             } else {
 
                 Router.go("home");
-                var user = Meteor.users.find().fetch();
+                var user = Meteor.users.find({_id:Meteor.userId()}).fetch();
                 var screenname = user[0].services.twitter.screenName;
                 var datatwitter = DataTwitter.find({screenname: screenname}).fetch();
 
@@ -108,9 +108,11 @@ Template.login.events({
           } else {
 
                 Router.go("home");
-                var user = Meteor.users.find().fetch();
+                var user = Meteor.users.find({_id:Meteor.userId()}).fetch();
                 var screenname = user[0].services.instagram.username;
                 var datainstagram = DataInstagram.find({screenname: screenname}).fetch();
+
+
 
                 if (datainstagram.length > 0){
 
