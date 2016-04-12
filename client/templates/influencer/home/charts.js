@@ -1,11 +1,49 @@
 
-function builtLine(HistoricalData) {
+function builtLine(HistoricalData, service) {
     responseDates = _.pluck(HistoricalData,'Date')
 
     xAxisDates = _.map(responseDates,function(e){
         return e.substring(8, 10) + "/" + e.substring(5, 7) + "/" +  e.substring(0, 4)
     })
-    $('#container-line').highcharts({
+
+    if ( service == "Twitter" ){
+        dataSeries = [
+            {
+                name: 'Followers',
+                color: '#5BC0DE',
+                // data: [12, 15, 25, 27, 10, 6, 5]
+                data: _.pluck(HistoricalData,'followers_count')
+
+            }, {
+                name: 'Favorites',
+                color: '#D9534F',
+                data: _.pluck(HistoricalData,'favorites_count')
+            }
+        ];
+
+        divId = '#container-line-twitter'
+    }
+
+    if ( service == "Instagram" ){
+        dataSeries = [
+            {
+                name: 'Followers',
+                color: '#5BC0DE',
+                // data: [12, 15, 25, 27, 10, 6, 5]
+                data: _.pluck(HistoricalData,'followers_count')
+
+            }, {
+                name: 'Likes',
+                color: '#D9534F',
+                data: _.pluck(HistoricalData,'likes_count')
+            }
+        ];
+
+        divId = '#container-line-instagram'
+    }
+    
+
+    $(divId).highcharts({
         
         chart: {
             type: 'line',
@@ -48,28 +86,28 @@ function builtLine(HistoricalData) {
             }
         },
         
-        series: [{
-            name: 'Followers',
-            color: '#5BC0DE',
-            // data: [12, 15, 25, 27, 10, 6, 5]
-            data: _.pluck(HistoricalData,'followers_count')
+        series: dataSeries
 
-        }, {
-            name: 'Favorites',
-            color: '#D9534F',
-            data: _.pluck(HistoricalData,'favorites_count')
-        }]
     });
 }
 
 /*
  * Call the function to built the chart when the template is rendered
  */
-Template.lineDemo.rendered = function() {
+Template.lineHistoricalTwitter.rendered = function() {
+    
     var datatwitter = DataTwitter.find({screenname:Meteor.user().services.twitter.screenName}).fetch();
-
     var HistoricalData = datatwitter[0].profileHistorical[0].HistoricalData;
-    builtLine(HistoricalData);
+    builtLine(HistoricalData,"Twitter");
+
+}
+
+Template.lineHistoricalInstagram.rendered = function() {
+
+    var screenname = Meteor.user().services.instagram.username;
+    var dataintagram = DataInstagram.find({screenname:screenname}).fetch();
+    var HistoricalData = dataintagram[0].profileHistorical[0].HistoricalData;
+    builtLine(HistoricalData,"Instagram");
 
 }
 

@@ -74,6 +74,37 @@ Template.myCommunitySection.events({
 
 
 
+Template.myCommunitySection.helpers({
+
+    activetw: function () {
+
+        var tw = Meteor.user().services.twitter;
+        if(tw){
+        return "active"
+        }
+        var insta = Meteor.user().services.instagram;
+        if(insta){
+        return null
+        }
+        
+    },
+     activeinsta: function () {
+
+
+        var tw = Meteor.user().services.twitter;
+        if(tw){
+        return null
+        }
+        var insta = Meteor.user().services.instagram;
+        if(insta){
+        return "active"
+        }
+        
+    },
+
+
+});
+
 Template.twitterCommunity.helpers({
 
     user: function () {
@@ -175,22 +206,14 @@ Template.instagramCommunity.helpers({
         var screenname = user[0].services.twitter.screenName;
         return screenname;
     },
-    datatwitter: function () {
-
-        var profile = Profile.find({userId:Meteor.userId()}).fetch();
-        // var twitteraccount = profile[0].twitteracccount;
-        var screenname = Meteor.user().services.twitter.screenName;
-        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
-        return datatwitter[0]
-    },
     totalgender: function () {
 
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
         // var twitteraccount = profile[0].twitteracccount;
-        var screenname = Meteor.user().services.twitter.screenName;
-        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
-        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
-        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var screenname = Meteor.user().services.instagram.username;
+        var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
+        var female = datainstagram[0].profileCommunity[0].GenderDistribution[0].Female;
+        var male = datainstagram[0].profileCommunity[0].GenderDistribution[0].Male;
         var totalgender = female + male;
         return totalgender
     },
@@ -198,11 +221,11 @@ Template.instagramCommunity.helpers({
 
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
         // var twitteraccount = profile[0].twitteracccount;
-        var screenname = Meteor.user().services.twitter.screenName;
-        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
-        var followers = datatwitter[0].profilestatistics[0].qtyfollowers;
-        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
-        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var screenname = Meteor.user().services.instagram.username;
+        var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
+        var female = datainstagram[0].profileCommunity[0].GenderDistribution[0].Female;
+        var male = datainstagram[0].profileCommunity[0].GenderDistribution[0].Male;
+        var followers = datainstagram[0].profilestatistics[0].qtyfollowers;
         var percentgender = (female + male)/followers;
         var percentgender = Math.round(percentgender * 100);
         return percentgender
@@ -211,10 +234,10 @@ Template.instagramCommunity.helpers({
 
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
         // var twitteraccount = profile[0].twitteracccount;
-        var screenname = Meteor.user().services.twitter.screenName;
-        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
-        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
-        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var screenname = Meteor.user().services.instagram.username;
+        var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
+        var female = datainstagram[0].profileCommunity[0].GenderDistribution[0].Female;
+        var male = datainstagram[0].profileCommunity[0].GenderDistribution[0].Male;
         var percentmale = male/(male+female);
         var percentmale = Math.round(percentmale * 100);
         return percentmale
@@ -223,10 +246,10 @@ Template.instagramCommunity.helpers({
 
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
         // var twitteraccount = profile[0].twitteracccount;
-        var screenname = Meteor.user().services.twitter.screenName;
-        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
-        var female = datatwitter[0].profilecommunity[0].GenderDistribution[0].Female;
-        var male = datatwitter[0].profilecommunity[0].GenderDistribution[0].Male;
+        var screenname = Meteor.user().services.instagram.username;
+        var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
+        var female = datainstagram[0].profileCommunity[0].GenderDistribution[0].Female;
+        var male = datainstagram[0].profileCommunity[0].GenderDistribution[0].Male;
         var percentfemale = female/(male+female);
         var percentfemale = Math.round(percentfemale * 100);
         return percentfemale

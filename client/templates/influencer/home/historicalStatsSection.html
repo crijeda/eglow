@@ -39,6 +39,7 @@
                         <div class="col-md-3 col-md-offset-2">
                             <p>Redes:</p>
                             <p class="socialicons" style="margin-bottom: 25px;">
+
                                 <a href="#twitterhistoric" aria-controls="twitterhistoric" role="tab" data-toggle="tab" class="community-networks" network="twitterhistoric"><i class="fa fa-twitter-square color"></i></a>
                                 <a href="#instagramhistoric" aria-controls="instagramhistoric" role="tab" data-toggle="tab" class="community-networks" network="instagramhistoric"><i class="fa fa-instagram"></i></a>
                             </p>
@@ -55,7 +56,7 @@
         <!-- TWITTER -->
         
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="twitterhistoric">
+                <div role="tabpanel" class="tab-pane {{activetw}}" id="twitterhistoric">
                     <div class="row historical-info" id="historical-twitter">
             <div class="col-md-12 col-lg-8 hidden">
                 <div class="row social-statistics">
@@ -100,7 +101,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        {{> lineDemo}}
+                                        {{> lineHistoricalTwitter}}
                                     </div>
                                 </div>
                             </div>
@@ -289,8 +290,8 @@
 <div>
                 </div>
 
-                <div role="tabpanel" class="tab-pane" id="instagramhistoric">
-                    <div class="col-md-6 col-lg-12">
+                <div role="tabpanel" class="tab-pane {{activeinsta}}" id="instagramhistoric">
+                    <div class="col-md-12 col-lg-12">
                 <div class="row">
                     <div class="col-xs-12 stats-twitter">
                         <div class="row">
@@ -298,38 +299,52 @@
                                 <h2>Instagram</h2><!-- /.social tw -->
                             </div><!-- /.col-xs-12 -->
                         </div><!-- /.row -->
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xs-6">
                                 <div class="chartbox sm single-number">
                                     <p class="sm"><i class="fa fa-users"></i> +<span id="data-historical-followers">{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</span> | +<span id="data-historical-following">{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</span></p>
                                     <h3>Seguidores | Seguidos</h3>
-                                </div><!-- /.chartbox -->
-                            </div><!-- /.col-xs-6 -->
+                                </div>
+                            </div>
                             <div class="col-xs-6">
                                 <div class="chartbox sm single-number">
                                     <p class="sm"><i class="fa fa-star"></i> +<span id="data-historical-favs">{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</span></p>
                                     <h3>Favs</h3>
-                                </div><!-- /.chartbox -->
+                                </div>
 
-                            </div><!-- /.col-xs-6 -->
-                        </div><!-- /.row -->
-                        <div class="row">
+                            </div>>
+                        </div> -->
+                        <div class="col-md-12 col-lg-12 visible-lg">
+                            <div class="chartbox profile interestbox topfollowers">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h3 class="page-header gradientbg">Evolucion Historica</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        {{> lineHistoricalInstagram}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row">
                             <div class="col-xs-12">
                                 <div class="chartbox sm single-number" style="margin-bottom: 20px;">
                                     <div class="row">
                                         <div class="col-xs-6">
                                             <p><i class="fa fa-twitter"></i> +<span id="data-historical-tweets">{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</span></p>
                                             <h3>Tweets</h3>
-                                        </div><!-- /.col-xs-6 -->
+                                        </div>
                                         <div class="col-xs-6">
                                             <p><i class="fa fa-list"></i> +<span id="data-historical-listed">{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</span></p>
                                             <h3>Listas</h3>
-                                        </div><!-- /.col-xs-6 -->
+                                        </div>
 
-                                    </div><!-- /.row -->
-                                </div><!-- /.chartbox -->
-                            </div><!-- /.col-xs-6 -->
-                        </div><!-- /.row -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
                     </div><!-- /.col-xs-4 -->
                     
                 </div><!-- /.row -->
@@ -376,21 +391,21 @@
                 </div><!-- /.row -->
 
             </div>
-            <div class="col-md-4 col-lg-4">
+            <div class="col-md-4 col-lg-8">
                 <div class="chartbox profile interestbox">
                     <div class="row">
                         <div class="col-xs-12">
-                            <h3 class="page-header gradientbg">Top Hashtags</h3>
+                            <h3 class="page-header gradientbg">Top Posts</h3>
                         </div><!-- /.col-xs-12 -->
                     </div><!-- /.row -->
                     <div class="row">
                         <div class="col-xs-10 col-xs-offset-1">
                             <div class="row" id="historical-hashtags-cont">
-                                <div class="col-xs-12"><p>1 - #{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p></div>
-                                <div class="col-xs-12"><p>2 - #{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p></div>
-                                <div class="col-xs-12"><p>3 - #{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p></div>
-                                <div class="col-xs-12"><p>4 - #{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p></div>
-                                <div class="col-xs-12"><p>5 - #{{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p></div>
+                                <div class="col-xs-12"><p>1 - <a href="{{datainstagram.profileHistorical.[0].LastPosts.[0]._link}}" target="_blank">{{datainstagram.profileHistorical.[0].LastPosts.[0]._link}}</a></p><p>Creado el: <a>{{datainstagram.profileHistorical.[0].LastPosts.[0]._created_time}}</a> | Alcance: <a>{{datainstagram.profileHistorical.[0].LastPosts.[0].Reach}}</a></p></div>
+                                <div class="col-xs-12"><p>2 - <a href="{{datainstagram.profileHistorical.[0].LastPosts.[1]._link}}" target="_blank">{{datainstagram.profileHistorical.[0].LastPosts.[1]._link}}</a></p><p>Creado el: <a>{{datainstagram.profileHistorical.[0].LastPosts.[1]._created_time}}</a> | Alcance: <a>{{datainstagram.profileHistorical.[0].LastPosts.[1].Reach}}</a></p></div>
+                                <div class="col-xs-12"><p>3 - <a href="{{datainstagram.profileHistorical.[0].LastPosts.[2]._link}}" target="_blank">{{datainstagram.profileHistorical.[0].LastPosts.[2]._link}}</a></p><p>Creado el: <a>{{datainstagram.profileHistorical.[0].LastPosts.[2]._created_time}}</a> | Alcance: <a>{{datainstagram.profileHistorical.[0].LastPosts.[2].Reach}}</a></p></div>
+                                <div class="col-xs-12"><p>4 - <a href="{{datainstagram.profileHistorical.[0].LastPosts.[3]._link}}" target="_blank">{{datainstagram.profileHistorical.[0].LastPosts.[3]._link}}</a></p><p>Creado el: <a>{{datainstagram.profileHistorical.[0].LastPosts.[3]._created_time}}</a> | Alcance: <a>{{datainstagram.profileHistorical.[0].LastPosts.[3].Reach}}</a></p></div>
+                            
                             </div><!-- /.row -->
 
 
@@ -400,13 +415,13 @@
                 </div><!-- /.chartbox -->
                 <!-- /.panel -->
             </div>
-            <div class="col-md-4 col-lg-4">
+            <!-- <div class="col-md-4 col-lg-4">
                 <div class="chartbox profile interestbox interestbrands">
                     <div class="row">
                         <div class="col-xs-12">
                             <h3 class="page-header gradientbg">Top Marcas</h3>
-                        </div><!-- /.col-xs-12 -->
-                    </div><!-- /.row -->
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-xs-10 col-xs-offset-1">
                             <div class="row" id="historical-brands-cont">
@@ -415,13 +430,13 @@
                                 <div class="col-xs-12"><p>3 - {{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p></div>
                                 <div class="col-xs-12"><p>4 - {{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p></div>
                                 <div class="col-xs-12"><p>5 - {{datainstagram.profileHistorical.[0].Top10Brands.[0].Marca}}</p></div>
-                            </div><!-- /.row -->
-                        </div><!-- /.col-xs-8 col-xs-offset-2 -->
+                            </div>
+                        </div>
 
-                    </div><!-- /.row -->
-                </div><!-- /.chartbox -->
-                <!-- /.panel -->
-            </div>
+                    </div>
+                </div>
+                
+            </div> -->
                 </div>
             </div>
 

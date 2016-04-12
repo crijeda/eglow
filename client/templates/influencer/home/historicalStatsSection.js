@@ -117,12 +117,37 @@ Template.historicalStatsSection.helpers({
         return time[hour]
     },
 
-    dataInstagram: function(){
+    datainstagram: function(){
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
         // var twitteraccount = profile[0].twitteracccount;
         var screenname = Meteor.user().services.instagram.username;
         var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
         return datainstagram[0]
+    },
+    activetw: function () {
+
+        var tw = Meteor.user().services.twitter;
+        if(tw){
+        return "active"
+        }
+        var insta = Meteor.user().services.instagram;
+        if(insta){
+        return null
+        }
+        
+    },
+     activeinsta: function () {
+
+
+        var tw = Meteor.user().services.twitter;
+        if(tw){
+        return null
+        }
+        var insta = Meteor.user().services.instagram;
+        if(insta){
+        return "active"
+        }
+        
     },
 
 });
