@@ -1,4 +1,4 @@
-    Template.users.rendered = function() {
+     Template.users.rendered = function() {
 
 };
 
@@ -85,15 +85,15 @@ Template.login.events({
                 if (datatwitter.length > 0){
 
                     
-                    // Meteor.call('sincTwitter');
-                    console.log('helloooo world!!');
+                  Meteor.call('sincTwitter');
 
                 }
                 else {
 
-                    
+                    Meteor.call('twregister');
+                    alert('User Register Successfull');
                     Meteor.call('createTwitterData');
-                    console.log(screenname);
+                    
                 }
             }
         });
@@ -117,15 +117,15 @@ Template.login.events({
                 if (datainstagram.length > 0){
 
                     
-                    // Meteor.call('sincInstagram');
-                    console.log('helloooo world!!');
-
+                    Meteor.call('sincInstagram');
+                  
                 }
                 else {
 
-                    
+                    Meteor.call('instaregister');
+                    alert('User Register Successfull');
                     Meteor.call('createInstagramData');
-                    console.log(screenname);
+                    
                 }
             }
       });

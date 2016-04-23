@@ -53,3 +53,5 @@ check
 iron:router
 peppelg:bootstrap-3-modal
 dsyko:d3-cloud
+aldeed:autoform-bs-datepicker
+rajit:bootstrap3-datepicker

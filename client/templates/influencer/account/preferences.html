@@ -20,63 +20,34 @@
 					<div class="row">
 						<div class="col-xs-10 col-xs-offset-1">
 							<div class="row">
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/apple.png" alt="" class="img-responsive" /></h4>
-									<p>Apple</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/lippi.png" alt="" class="img-responsive" /></h4>
-									<p>Lippi</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/lipton.png" alt="" class="img-responsive" /></h4>
-									<p>Lipton</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/microsoft.png" alt="" class="img-responsive" /></h4>
-									<p>Microsoft</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/puma.png" alt="" class="img-responsive" /></h4>
-									<p>Puma</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/samsung.png" alt="" class="img-responsive" /></h4>
-									<p>Samsung</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
+
+							 {{#each brandsname}}
 
 								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/samsung.png" alt="" class="img-responsive" /></h4>
-									<p>Samsung</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/puma.png" alt="" class="img-responsive" /></h4>
-									<p>Puma</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/microsoft.png" alt="" class="img-responsive" /></h4>
-									<p>Microsoft</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/lipton.png" alt="" class="img-responsive" /></h4>
-									<p>Lipton</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/lippi.png" alt="" class="img-responsive" /></h4>
-									<p>Lippi</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand">
-									<h4><img src="http://agenciadev01.info/lab/digirep/img/brands/apple.png" alt="" class="img-responsive" /></h4>
-									<p>Apple</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-brand -->
+									<h4><img src="{{ pathFor 'home' }}cfs/files/uploads/{{fileId}}" alt="" class="img-responsive" /></h4>
+									<h4><p class="label label-default">{{name}}</p></h4>
+								</div>
+							 
+      						{{/each}}
 							</div>
 							<div class="row">
 								<div class="col-xs-12">
-									<form action="#">
+									
 										<h5>Agrega una nueva marca</h5>
-										<p><input type="text" class="form-control" placeholder="Escrbe el nombre de una marca..." /></p>
-										<p><button class="btn btn-premium sm">Agregar</button></p>
-									</form>
+											{{#autoForm id="profile2" doc=this type="update" collection="Profile"}}
+									  	<fieldset>
+									      <legend></legend>
+									      {{> afFieldInput name="brands" type="select2" multiple=true select2Options=s2Opts}}
+									      
+									      <span style="display: none">
+									      {{> afQuickField name='userId' value=user._id}} 
+									      </span>
+									    </fieldset>
+									    <p>
+									    <button type="submit" class="btn btn-premium sm">Actualizar</button>
+									    </p>
+									  {{/autoForm}}
+			
 								</div><!-- /.col-xs-12 -->
 							</div><!-- /.row -->
 						</div><!-- /.col-xs-8 col-xs-offset-2 -->
@@ -93,64 +64,31 @@
 					<div class="row">
 						<div class="col-xs-10 col-xs-offset-1">
 							<div class="row">
+							{{#each interests}}
 								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-futbol-o"></i></h4>
-									<p>Deportes</p>
+									<!-- <h4><i class="fa fa-futbol-o"></i></h4> -->
+									<h4><p class="label label-default">{{this}}</p></h4>
 								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-glass"></i></h4>
-									<p>Entretención</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-car"></i></h4>
-									<p>Automóviles</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-paw"></i></h4>
-									<p>Mascotas</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-university"></i></h4>
-									<p>Educación</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-camera-retro"></i></h4>
-									<p>Fotografía</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-camera-retro"></i></h4>
-									<p>Fotografía</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-university"></i></h4>
-									<p>Educación</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-paw"></i></h4>
-									<p>Mascotas</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-car"></i></h4>
-									<p>Automóviles</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-glass"></i></h4>
-									<p>Entretención</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference">
-									<h4><i class="fa fa-futbol-o"></i></h4>
-									<p>Deportes</p>
-								</div><!-- /.col-xs-4 col-sm-4 col-md-3 col-lg-2 single-preference -->
-
+							{{/each}}
 							</div>
 							<div class="row">
 								<div class="col-xs-12">
-									<form action="#">
+									
 										<h5>Agrega nuevos intereses</h5>
-										<p><input type="text" class="form-control" placeholder="Escrbe un concepto o una idea..." /></p>
-										<p><button class="btn btn-premium sm">Agregar</button></p>
-									</form>
+										{{#autoForm id="profile2" doc=this type="update" collection="Profile"}}
+									  	<fieldset>
+									      <legend></legend>
+									      {{> afFieldInput name="interests" type="select2" multiple=true select2Options=s2Opts2}}
+									      
+									      <span style="display: none">
+									      {{> afQuickField name='userId' value=user._id}} 
+									      </span>
+									    </fieldset>
+									    <p>
+									    <button type="submit" class="btn btn-premium sm">Actualizar</button>
+									    </p>
+									  {{/autoForm}}
+								
 								</div><!-- /.col-xs-12 -->
 							</div><!-- /.row -->
 						</div><!-- /.col-xs-8 col-xs-offset-2 -->

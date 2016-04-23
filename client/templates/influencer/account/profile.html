@@ -29,15 +29,16 @@
 									      {{> afQuickField name='firstname'}}
 									      {{> afQuickField name='lastname'}}
 									      {{> afQuickField name='rut' placeholder='Ej. 10122122-1'}}
-									       <div class="form-group">
-											<label>E-mail</label>
-											<input class="form-control" value="{{user.emails.[0].address}}" disabled>
-										  </div>
+									      {{> afQuickField name='emailaccount'}}
 									      {{> afQuickField name='phone'}}
 									      {{> afQuickField name='address'}}
 									      {{> afQuickField name='bio'}}
 									      {{> afQuickField name="gender" options="allowed" noselect=true}}
+									      <label class="control-label">Profesión</label>
+									      {{> afFieldInput name="profession" type="select2" multiple=true select2Options=s2Opts3}}
+									      <label class="control-label"></label>
 									      {{> afQuickField name='birthday'}}
+
 									 <!--  	  {{> afQuickField name='twitteracccount'}}
 									      {{> afQuickField name='instagramaccount'}} -->
 									      <span style="display: none">
@@ -48,7 +49,14 @@
 									    <button type="submit" class="btn btn-premium sm">Actualizar</button>
 									    </p>
 									  {{/autoForm}}
-
+									  <script type="text/javascript">
+										    $(document).ready(function() {
+										        $('#example-post').multiselect({
+										            includeSelectAllOption: true,
+										            enableFiltering: true
+										        });
+										    });
+										</script>
 									    {{else}}
 									    {{#autoForm id="profile" type="insert" collection="Profile"}}
 									  	<fieldset>
@@ -56,14 +64,14 @@
 									      {{> afQuickField name='firstname'}}
 									      {{> afQuickField name='lastname'}}
 									      {{> afQuickField name='rut' placeholder='Ej. 10122122-1'}}
-									       <div class="form-group">
-											<label>E-mail</label>
-											<input class="form-control" value="{{user.emails.[0].address}}" disabled>
-										  </div>
+									      {{> afQuickField name='emailaccount'}}
 									      {{> afQuickField name='phone'}}
 									      {{> afQuickField name='address'}}
 									      {{> afQuickField name='bio'}}
 									      {{> afQuickField name="gender" options="allowed" noselect=true}}
+									      <label class="control-label">Profesión</label>
+									      {{> afFieldInput name="profession" type="select2" multiple=true select2Options=s2Opts3}}
+									      <label class="control-label"></label>
 									      {{> afQuickField name='birthday'}}
 									    <!--    {{> afQuickField name='twitteracccount'}}
 									      {{> afQuickField name='instagramaccount'}} -->
@@ -75,6 +83,14 @@
 									    <button type="submit" class="btn btn-premium sm">Actualizar</button>
 									    </p>
 									  {{/autoForm}}
+									    <script type="text/javascript">
+										    $(document).ready(function() {
+										        $('#example-post').multiselect({
+										            includeSelectAllOption: true,
+										            enableFiltering: true
+										        });
+										    });
+										</script>
 									  {{/if}}
 
 										

@@ -3,8 +3,8 @@ if (Meteor.isClient) {
   // This code only runs on the client
   Meteor.subscribe("users");
   Meteor.subscribe("profile");
-  Meteor.subscribe("datatwitter");
-  Meteor.subscribe("datainstagram");
+  Meteor.subscribe("campaigns");
+  Meteor.subscribe("brands");
 
   Meteor.users.allow({
     insert: function () { return true; },
@@ -15,16 +15,12 @@ if (Meteor.isClient) {
 }
 
 
-Template.homeInfluencer.events({
+Template.influencerCampaigns.events({
 
     'click .test': function (event) {
          setTimeout(function(){
             Modal.show('exampleModal')
         })
-    },
-    'click .testregister': function (event) {
-        event.preventDefault();
-        Meteor.call('testregister');
     },
     'click .sincTwitter': function (event) {
         event.preventDefault();
@@ -35,7 +31,7 @@ Template.homeInfluencer.events({
         Meteor.call('sincInstagram');
     },
     'click .instaconnect': function (event) {
-        event.preventDefault();        
+        event.preventDefault();
         var olduserid = Meteor.userId();
         // console.log(olduserid);
         var user1 = Meteor.users.find({_id:Meteor.userId()}).fetch();
@@ -53,8 +49,7 @@ Template.homeInfluencer.events({
                     console.log(twitter);
                     console.log(instagram);
                     Meteor.users.remove({_id:Meteor.userId()});
-                    Meteor.call('instaregister');
-                    alert('User Register Successfull - Ahora te puedes logear con cualquiera de tus cuentas');  
+
 
             }
       );
@@ -78,8 +73,6 @@ Template.homeInfluencer.events({
                       { $set: {  "services" : { "instagram" : instagram, "twitter" : twitter }}});
 
                     Meteor.users.remove({_id:Meteor.userId()});
-                    Meteor.call('twregister');
-                    alert('User Register Successfull - Ahora te puedes logear con cualquiera de tus cuentas');  
 
 
             }
@@ -91,7 +84,7 @@ Template.homeInfluencer.events({
 
 
 
-Template.homeInfluencer.helpers({
+Template.influencerCampaigns.helpers({
 
     user: function () {
 
@@ -109,24 +102,6 @@ Template.homeInfluencer.helpers({
         var screenname = user[0].services.twitter.screenName;
         return screenname;
     },
-     lastupdatetw: function () {
-
-        var profile = Profile.find({userId:Meteor.userId()}).fetch();
-        // var twitteraccount = profile[0].twitteracccount;
-        var screenname = Meteor.user().services.twitter.screenName;
-        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
-        var date = datatwitter[0].profilestatistics[0].lastupdate;
-        return moment(date).format('DD-MM-YYYY HH:mm');
-    },
-    lastupdateinsta: function () {
-
-        var profile = Profile.find({userId:Meteor.userId()}).fetch();
-        var screenname = Meteor.user().services.instagram.username;
-        var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
-        var date = datainstagram[0].profilestatistics[0].lastupdate;
-        return moment(date).format('DD-MM-YYYY HH:mm');
-    }, 
-
     datatwitter: function () {
 
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
@@ -142,77 +117,97 @@ Template.homeInfluencer.helpers({
         var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
         return datainstagram[0]
     },
+     brandsname: function () {
+    // var array = [{name:"Hello World"}];
+    var profile = Profile.find({userId:Meteor.userId()}).fetch();
+    var brands = profile[0].brands;
+    var brands2 = Brands.find({name:{$in: brands}}).fetch();
+    // var brands2 = Brands.find().fetch();
+    var brands2 = _.sortBy(brands2, "name");
+
+    return brands2
+    },
+    campaigns: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+
+            var len = campaigns.length;
+             
+            for (i = 0; i < len; i++) { 
+
+            var brands2 = Brands.find({_id:campaigns[0].brands[0]}).fetch();
+
+            campaigns[i].fileId = brands2[i].fileId;
+            };
+
+    return campaigns
+    },
+        totalprofit: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+
+            var len = campaigns.length;
+            var sum = 0;
+             
+            for (i = 0; i < len; i++) { 
+            var sum = campaigns[i].budget + sum;
+            
+            };
+
+    return sum
+    },
+    campaignsactive: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+
+    return campaigns
+    },
 
 });
-Template.homeInfluencer.pieDemo = function() {
 
-    // 'external' data
-    var data = new Array();
+Template.influencerCampaignsDetail.helpers({
 
-    data.push({
-        name: 'Facebook',
-        y: 25,
-        color: '#8b8b8b'
-    });
+    campaigns: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
 
-    data.push({
-        name: 'Twitter',
-        y: 24,
-        color: '#282828'
-    });
+            var len = campaigns.length;
+             
+            for (i = 0; i < len; i++) { 
 
-    data.push({
-        name: 'Instagram',
-        y: 38,
-        color: '#b3b2b2'
-    });
+            var brands2 = Brands.find({_id:campaigns[0].brands[0]}).fetch();
 
-    data.push({
-        name: 'Linkedin',
-        y: 13,
-        color: '#c7c6c6'
-    });
+            campaigns[i].fileId = brands2[i].fileId;
 
-    return {
-        // chart: {
-        //     plotBackgroundColor: 'rgba(255, 255, 255, 0.1)',
-        //     plotBorderWidth: null,
-        //     plotShadow: false,
-        // },
-        chart:{
-            backgroundColor: "rgba(255, 255, 255, 0)",
-            plotBackgroundColor: "#EEE"
-        },
-        title: {
-            text: ''
-        },
-        tooltip: {
-            pointFormat: '<b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                // allowPointSelect: true,
-                cursor: 'pointer',
-                center: ['50%', '30%'],
-                dataLabels: {
-                    enabled: true,
-                    // format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    // connectorColor: 'silver'
-                    distance: 50,
-                    style: {
-                        fontWeight: 'bold',
-                        // color: "#484848"
-                        color: 'white',
-                        textShadow: '0px 1px 2px black'
-                    }
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'genre',
-            innerSize: '70%',
-            data:data
-        }]
-    };
-};
+            };
+
+    return campaigns[0]
+    },
+    countposts: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
+
+    return campaigns[0].posts.length;
+    },
+    totalprofit: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+
+            var len = campaigns.length;
+            var sum = 0;
+             
+            for (i = 0; i < len; i++) { 
+            var sum = campaigns[i].budget + sum;
+            
+            };
+
+    return sum
+    },
+    campaignsactive: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+
+    return campaigns
+    },
+
+});

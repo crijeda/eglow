@@ -37,6 +37,9 @@ Template.influencerProfile.helpers({
     var profile = Profile.find({userId:Meteor.userId()}).fetch();
     return profile
     },
+    s2Opts3: function () {
+    return {placeholder: 'Ingresa tu profesión'};
+    }
 
 });
 

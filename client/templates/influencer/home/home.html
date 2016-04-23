@@ -141,18 +141,23 @@
         	<div class="col-md-12 col-lg-12">
         		<div class="row">
 
+        	<!-- 	 <span class="pull-right">
+        		 
+		        			 <button type="submit" class="btn btn-default sm testregister"><i class="ion-refresh"><h4>Registro de Usuario </h4></i></button>
+		        </span> -->
         		{{ # if datatwitter.screenname}}
         			<!-- TWITTER -->
 		        	<div class="col-xs-12">
 		        		<div class="row">
 		        			<div class="col-xs-12">
 		        			 <span class="pull-right">
+		        			 <button type="submit" class="btn btn-premium sm twconnect"><i class="fa fa-twitter"></i></button>
 		        			 <button type="submit" class="btn btn-premium sm sincTwitter"><i class="ion-refresh"></i></button>
 		        			 </span>
 		        			 <!-- <span class="pull-right">
 		        			 <button type="submit" class="btn btn-premium sm test"><i class="ion-help"></i></button>
 		        			 </span> -->
-		        				<h2>Twitter</h2><!-- /.social tw -->
+		        				<h2>Twitter</h2>{{ # if lastupdatetw}}<h5>Última Actualización: {{ lastupdatetw }}</h5>{{/if}}<!-- /.social tw -->
 		        			</div><!-- /.col-xs-12 -->
 		        		</div><!-- /.row -->
 		        		<div class="row">
@@ -222,9 +227,10 @@
 		        			<div class="row">
 		        			<div class="col-xs-12">
 		        			<span class="pull-right">
+		        			<button type="submit" class="btn btn-premium sm instaconnect"><i class="fa fa-instagram"></i></button>
 		        			 <button type="submit" class="btn btn-premium sm sincInstagram"><i class="ion-refresh"></i></button>
 		        			 </span>
-		        				<h2>Instagram</h2><!-- /.social tw -->
+		        				<h2>Instagram</h2>{{ # if lastupdateinsta}}<h5>Última Actualización: {{ lastupdateinsta }}</h5>{{/if}}
 		        			</div><!-- /.col-xs-12 -->
 		        		</div><!-- /.row -->
 		        		<div class="row">
@@ -537,7 +543,8 @@
 			</div><!-- /.col-xs-3 -->
 			</section>
 
-	{{> historicalStatsSection}}	
+	{{> historicalStatsSection}}
+
     {{> myCommunitySection}}	
 	
 	
