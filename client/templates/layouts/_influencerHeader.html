@@ -30,62 +30,44 @@
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-
+                                {{# each campaigns}}
                                    <li>
-                                        <a href="#">
+                                        <a href="{{ pathFor 'influencer' }}/campaigns/{{_id}}">
                                             <div>
                                                 <p>
                                                     <strong>
-                                                        Carolina Mandil
+                                                        {{# if profile.firstname}}
+                                                        {{ profile.firstname }} {{ profile.lastname }}
+                                                        {{else}}
+                                                        {{ user.username }} 
+                                                        {{/if}}
                                                     </strong>
                                                     <br>
-                                                        Campaña  Vienesas de seleccion
+                                                        {{name}}
                                                     <span class="pull-right text-muted">
-                                                        20%
+                                                        {{percentcomplete}}%
                                                     </span>
                                                 </p>
                                                 <div class="progress progress-striped active">
-                                                    <div class="progress-bar progress-bar-warning" style="width: 20%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar">
+                                                    <div class="progress-bar progress-bar-warning" style="width: {{percentcomplete}}%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="{{percentcomplete}}" role="progressbar">
                                                         <span class="sr-only">
-                                                            20% completo
+                                                            {{percentcomplete}}% completo
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
-
-                                    <li>
-                                        <a href="#">
-                                            <div>
-                                                <p>
-                                                    <strong>
-                                                        Carolina Mandil
-                                                    </strong>
-                                                    <br>
-                                                        Campaña  Vienesas de seleccion
-                                                    <span class="pull-right text-muted">
-                                                        20%
-                                                    </span>
-                                                </p>
-                                                <div class="progress progress-striped active">
-                                                    <div class="progress-bar progress-bar-warning" style="width: 20%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar">
-                                                        <span class="sr-only">
-                                                            20% completo
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
+                                    {{/each}}
                                     
                                 </ul>
                             </li>
                             <li class="footer">
-                                <a href="#"><b>Ver todas mis campañas </b><i class="fa fa-chevron-right"></i></a>
+                                <a href="{{ pathFor 'influencerCampaigns' }}"><b>Ver todas mis campañas </b><i class="fa fa-chevron-right"></i></a>
                             </li>
                         </ul>
                     </li>
+
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -95,19 +77,19 @@
                         </a>
                         <ul class="dropdown-menu menu">
                             <li>
-                                <a href="#">
+                                <a href="{{ pathFor 'influencer' }}/preferences/{{userId}}">
                                     <span>Mis preferencias</span>
                                 </a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="{{ pathFor 'influencer' }}/profile/{{userId}}">
                                     <span>Mi perfil</span>
                                 </a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="{{ pathFor 'influencer' }}/billing/{{userId}}">
                                     <span>Mis datos de facturacion</span>
                                 </a>
                             </li>
@@ -122,20 +104,20 @@
                         </a>
                         <ul class="dropdown-menu menu">
                             <li>
-                                <a href="#">
+                                <a href="{{ pathFor 'influencerCampaigns' }}">
                                     <span>Campañas activas</span>
                                 </a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="{{ pathFor 'influencerCampaignsComplete' }}">
                                     <span>Historial de campañas</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="dropdown">
+                  <!--   <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bar-chart"></i>
                             <i class="caret"></i>
@@ -160,7 +142,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
                     <!-- // -->
                     <li class="dropdown tasks-menu">
@@ -376,14 +358,14 @@
                     </a>
                     <ul class="nav">
                         <li>
-                            <a href="{{ pathFor 'influencer/campaigns' }}">Campañas Activas</a>
+                            <a href="{{ pathFor 'influencerCampaigns' }}">Campañas Activas</a>
                         </li>
                         <li>
-                            <a href="{{ pathFor 'influencer/campaignsRecord' }}">Historial</a>
+                            <a href="{{ pathFor 'influencerCampaignsComplete' }}">Historial</a>
                         </li>
                     </ul>
                 </li>
-
+<!-- 
                 <li>
                     <a href="#">
                         <i class="fa fa-star"></i><span>Estadisticas</span> <i class="fa fa-angle-left pull-right"></i>
@@ -393,14 +375,14 @@
                         <li><a href="#">Comprar reporte</a></li>
                         <li><a href="{{ pathFor 'influencer/visits' }}">Quien ha visto mi perfil</a></li>
                     </ul>
-                </li>
+                </li> -->
 
                 <li>
                     <a href="#">
                         <i class="fa fa-star"></i><span>Mensajes</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="nav">
-                        <li><a href="#">Mensajes de agencias</a></li>
+                        <li><a href="{{ pathFor 'meteorchat' }}">Mensajes de agencias</a></li>
                     </ul>
                 </li>
 

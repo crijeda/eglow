@@ -48,13 +48,17 @@ Template.homeInfluencer.events({
           }
                     var user2 = Meteor.users.find({_id:Meteor.userId()}).fetch();
                     var instagram = user2[0].services.instagram;
+                    Meteor.users.remove({_id:Meteor.userId()});
                      Meteor.users.update({_id:olduserid},
                       { $set: {  "services" : { "twitter": twitter, "instagram" : instagram }}});
-                    console.log(twitter);
-                    console.log(instagram);
-                    Meteor.users.remove({_id:Meteor.userId()});
+                    // console.log(twitter);
+                    // console.log(instagram);
+                    
+                    var olduser = Meteor.users.find({_id:olduserid}).fetch();
+                    var insta = olduser[0].services.instagram.username;
+                    var tw = olduser[0].services.twitter.screenName;
                     Meteor.call('instaregister');
-                    alert('User Register Successfull - Ahora te puedes logear con cualquiera de tus cuentas');  
+                    alert('User Register Successfull - Ahora te puedes logear con cualquiera de tus cuentas'+ tw + insta);  
 
             }
       );
@@ -74,12 +78,15 @@ Template.homeInfluencer.events({
           }
                     var user2 = Meteor.users.find({_id:Meteor.userId()}).fetch();
                     var twitter = user2[0].services.twitter;
+                    Meteor.users.remove({_id:Meteor.userId()});
                      Meteor.users.update({_id:olduserid},
                       { $set: {  "services" : { "instagram" : instagram, "twitter" : twitter }}});
-
-                    Meteor.users.remove({_id:Meteor.userId()});
+                    var olduser = Meteor.users.find({_id:olduserid}).fetch();
+                    var insta = olduser[0].services.instagram.username;
+                    var tw = olduser[0].services.twitter.screenName;
+                    
                     Meteor.call('twregister');
-                    alert('User Register Successfull - Ahora te puedes logear con cualquiera de tus cuentas');  
+                    alert('User Register Successfull - Ahora te puedes logear con cualquiera de tus cuentas' + tw + insta);  
 
 
             }

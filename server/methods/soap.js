@@ -1,6 +1,6 @@
 Meteor.methods({
 	'sincTwitterCommunity': function(){
-        var url = 'http://52.38.7.218/digirepWebService/TwitterWebService.svc?wsdl';
+        var url = 'http://52.38.21.30/digirepWebService/TwitterWebService.svc?wsdl';
         // var profile = Profile.find({userId:Meteor.userId()}).fetch();
 		var screenname = Meteor.user().services.twitter.screenName;
 		var args = {screenname: screenname, dateFrom: '2016-03-01T00:00:00', dateTo: '2016-03-31T00:00:00'};
@@ -130,7 +130,7 @@ Meteor.methods({
 
     	// console.log(today);
     	// console.log(lastweek);
-        var url = 'http://52.38.7.218/digirepWebService/TwitterWebService.svc?wsdl';
+        var url = 'http://52.38.21.30/digirepWebService/TwitterWebService.svc?wsdl';
         // var profile = Profile.find({userId:Meteor.userId()}).fetch();
 		var screenname = Meteor.user().services.twitter.screenName;
 		var args = {screenname: screenname, dateFrom: lastweek, dateTo: today};
@@ -234,7 +234,7 @@ Meteor.methods({
     },
 
     'sincTwitter': function(){
-        var url = 'http://52.38.7.218/digirepWebService/TwitterWebService.svc?wsdl';
+        var url = 'http://52.38.21.30/digirepWebService/TwitterWebService.svc?wsdl';
         // var profile = Profile.find({userId:Meteor.userId()}).fetch();
 		var screenname = Meteor.user().services.twitter.screenName;
 		var args = {screenname: screenname};
@@ -283,7 +283,7 @@ Meteor.methods({
 			}
     },
     'createTwitterData': function(passScreenName){
-        var url = 'http://52.38.7.218/digirepWebService/TwitterWebService.svc?wsdl';
+        var url = 'http://52.38.21.30/digirepWebService/TwitterWebService.svc?wsdl';
         // var user = Meteor.users.find().fetch();
            if(passScreenName){
                  var screenname = passScreenName
@@ -320,7 +320,7 @@ Meteor.methods({
 
 			  DataTwitter.insert({screenname:screenname, profilestatistics:[{lastupdate: moment().toDate(), screenname:screenname, name:data.Name, profileimage:data.ProfileImage, profilebio:data.ProfileBio, qtytweets:data.QtyTweets, qtyfollowers:data.QtyFollowers, qtyfollowing:data.QtyFollowing, qtyfavorites:data.QtyFavorites, qtyretweets :data.QtyRetweets, images:data.Images, videos:data.Videos, music:data.Music}]});
 			  // DataTwitter.insert({screenname:"Camacri", profilestatistics:[{"screenname":"Camacri","name":"BLONDIE","profileimage":"http://pbs.twimg.com/profile_images/491077197201829888/fQV2RA3o_normal.jpeg","profilebio":"Ganadora de @StartupChile  Co-Founder & CEO de @DIGIREPCL E-Commerce/Digital Expert!","qtytweets":3011,"qtyfollowers":816,"qtyfollowing":561,"qtyFfavorites":845,"qtyretweets":574,"images":141,"videos":0,"music":0}]})
-			  console.log("Successful Twitter User Creation");
+			  console.log("Successful DataTwitter User Creation");
 			}
 			catch (err) {
 			  if(err.error === 'soap-creation') {
@@ -415,8 +415,8 @@ Meteor.methods({
 			  console.log(screenname);
 
 			  DataInstagram.insert({lastupdate: moment().toDate(), screenname:screenname, profilestatistics:[{ screenname:screenname, name:data.Name, profileimage:data.ProfileImage, profilebio:data.ProfileBio, qtyfeeds:data.QtyFeeds, qtyfollowers:data.QtyFollowers, qtyfollowing:data.QtyFollowing, qtylikes:data.QtyLikes, images:data.Images, videos:data.Videos, music:data.Music}]});
-			  // DataTwitter.insert({screenname:"Camacri", profilestatistics:[{"screenname":"Camacri","name":"BLONDIE","profileimage":"http://pbs.twimg.com/profile_images/491077197201829888/fQV2RA3o_normal.jpeg","profilebio":"Ganadora de @StartupChile  Co-Founder & CEO de @DIGIREPCL E-Commerce/Digital Expert!","qtytweets":3011,"qtyfollowers":816,"qtyfollowing":561,"qtyFfavorites":845,"qtyretweets":574,"images":141,"videos":0,"music":0}]})
-			  console.log("Successful Instagram User Creation");
+			 
+			  console.log("Successful DataInstagram User Creation");
 			}
 			catch (err) {
 			  if(err.error === 'soap-creation') {

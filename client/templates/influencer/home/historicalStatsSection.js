@@ -157,27 +157,28 @@ Template.wordcloudtw.rendered = function() {
     $(document).ready(function(){ 
 
         var tags = new Array();
-         var screenname = Meteor.user().services.twitter.screenName;
-         var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
-         var wordcloud = datatwitter[0].profileHistorical[0].WordCloud;
-         // 'external' data
-         var len = wordcloud.length;
+        var screenname = Meteor.user().services.twitter.screenName;
+        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+        var wordcloud = datatwitter[0].profileHistorical[0].WordCloud;
+        // 'external' data
+        var len = wordcloud.length;
          
         for (i = 0; i < len; i++) { 
-         tags.push({
-            key: wordcloud[i]._word,
-            value: wordcloud[i]._count
-        });
-
+            tags.push({
+                key: wordcloud[i]._word,
+                value: wordcloud[i]._count
+            });
         }
+
+        console.log(tags)
 
         var fill = d3.scale.category20b();
 
-        var w = window.innerWidth*0.8,
-            h = 200;
+        //var w = window.innerWidth*0.8
+        var w = $('.wordcloudTwDiv').width()
+        var h = 200;
 
-        var max,
-                fontSize;
+        var max, fontSize;
             
         var layout = d3.layout.cloud()
             .timeInterval(Infinity)
@@ -203,7 +204,7 @@ Template.wordcloudtw.rendered = function() {
         };
 
         function draw(data, bounds) {
-            var w = window.innerWidth*0.8,
+            var w = $('.wordcloudTwDiv').width()
                 h = 200;
 
             svg.attr("width", w).attr("height", h);
@@ -234,7 +235,7 @@ Template.wordcloudtw.rendered = function() {
                 .style("font-size", function(d) {
                     return d.size + "px";
                 })
-                .style("opacity", 1e-6)
+                //.style("opacity", 1e-6)
                 .transition()
                 .duration(1000)
                 .style("opacity", 1);
@@ -268,6 +269,8 @@ Template.wordcloudtw.rendered = function() {
 Template.wordcloudinstagram.rendered = function() {
     $(document).ready(function(){ 
 
+        //alert($('.chartbox').width())
+
         var tags = new Array();
          var screenname = Meteor.user().services.instagram.username;
          var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
@@ -276,16 +279,16 @@ Template.wordcloudinstagram.rendered = function() {
          var len = wordcloud.length;
          
         for (i = 0; i < len; i++) { 
-         tags.push({
-            key: wordcloud[i]._word,
-            value: wordcloud[i]._count
-        });
-
+            tags.push({
+                key: wordcloud[i]._word,
+                value: wordcloud[i]._count
+            });
         }
 
         var fill = d3.scale.category20b();
 
-        var w = window.innerWidth*0.8,
+        //alert($('.wordcloudInstaDiv').width())
+        var w = $('.wordcloudInstaDiv').width()
             h = 200;
 
         var max,
@@ -315,7 +318,8 @@ Template.wordcloudinstagram.rendered = function() {
         };
 
         function draw(data, bounds) {
-            var w = window.innerWidth*0.8,
+            //alert($('.wordcloudInstaDiv').width())
+            var w = $('.wordcloudInstaDiv').width()
                 h = 200;
 
             svg.attr("width", w).attr("height", h);
@@ -346,7 +350,7 @@ Template.wordcloudinstagram.rendered = function() {
                 .style("font-size", function(d) {
                     return d.size + "px";
                 })
-                .style("opacity", 1e-6)
+                //.style("opacity", 1e-6)
                 .transition()
                 .duration(1000)
                 .style("opacity", 1);

@@ -81,19 +81,34 @@ Template.login.events({
                 var user = Meteor.users.find({_id:Meteor.userId()}).fetch();
                 var screenname = user[0].services.twitter.screenName;
                 var datatwitter = DataTwitter.find({screenname: screenname}).fetch();
+                // var screenname2 = user[0].services.instagram.username;
+                // var datainstagram = DataInstagram.find({screenname: screenname2}).fetch();
+
+                if(screenname.length > 0 && datatwitter.length == 0){
+
+                    Meteor.call('twregister');
+                    alert('User Register Successfull');
+                    Meteor.call('createTwitterData');
+
+                }
+
+                // if (datainstagram.length > 0){
+
+                    
+                //     Meteor.call('sincInstagram');
+                //     Meteor.call('sincInstagramHistorical');
+                //     Meteor.call('sincInstagramCommunity');
+
+                  
+                // }
 
                 if (datatwitter.length > 0){
 
                     
                   Meteor.call('sincTwitter');
+                  Meteor.call('sincTwitterHistorical');
+                  Meteor.call('sincTwitterCommunity');
 
-                }
-                else {
-
-                    Meteor.call('twregister');
-                    alert('User Register Successfull');
-                    Meteor.call('createTwitterData');
-                    
                 }
             }
         });
@@ -111,22 +126,39 @@ Template.login.events({
                 var user = Meteor.users.find({_id:Meteor.userId()}).fetch();
                 var screenname = user[0].services.instagram.username;
                 var datainstagram = DataInstagram.find({screenname: screenname}).fetch();
+                // var screenname2 = user[0].services.twitter.screenName;
+                // var datatwitter = DataTwitter.find({screenname: screenname2}).fetch();
 
+                // alert(screenname.length);
+                // alert (datainstagram.length);
 
-
-                if (datainstagram.length > 0){
-
-                    
-                    Meteor.call('sincInstagram');
-                  
-                }
-                else {
+                if(screenname.length > 0 && datainstagram.length == 0){
 
                     Meteor.call('instaregister');
                     alert('User Register Successfull');
                     Meteor.call('createInstagramData');
-                    
+
                 }
+
+                 if (datainstagram.length > 0){
+
+                    
+                    Meteor.call('sincInstagram');
+                    Meteor.call('sincInstagramHistorical');
+                    Meteor.call('sincInstagramCommunity');
+
+                  
+                }
+
+                // if (datatwitter.length > 0){
+
+                    
+                //   Meteor.call('sincTwitter');
+                //   Meteor.call('sincTwitterHistorical');
+                //   Meteor.call('sincTwitterCommunity');
+
+                // }
+ 
             }
       });
 

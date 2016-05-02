@@ -129,22 +129,22 @@ Template.influencerCampaigns.helpers({
     },
     campaigns: function () {
     // var array = [{name:"Hello World"}];
-    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
 
             var len = campaigns.length;
              
             for (i = 0; i < len; i++) { 
 
-            var brands2 = Brands.find({_id:campaigns[0].brands[0]}).fetch();
+            var brands2 = Brands.find({_id:campaigns[i].brands[0]}).fetch();
 
-            campaigns[i].fileId = brands2[i].fileId;
+            campaigns[i].fileId = brands2[0].fileId;
             };
 
     return campaigns
     },
         totalprofit: function () {
     // var array = [{name:"Hello World"}];
-    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
 
             var len = campaigns.length;
             var sum = 0;
@@ -158,9 +158,32 @@ Template.influencerCampaigns.helpers({
     },
     campaignsactive: function () {
     // var array = [{name:"Hello World"}];
-    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
 
     return campaigns
+    },
+    percentcomplete: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
+
+    var total = campaigns[0].posts.length;
+    var sum = 0;
+
+    for (i = 0; i < total; i++) { 
+
+    if(campaigns[0].posts[i].status == true){
+
+    var sum = sum + 1;
+
+    }
+
+    };
+
+    var percentcomplete = sum/total;
+    var percentcomplete = Math.round(percentcomplete * 100);
+    return percentcomplete
+
+
     },
 
 });
@@ -170,18 +193,38 @@ Template.influencerCampaignsDetail.helpers({
     campaigns: function () {
     // var array = [{name:"Hello World"}];
     var campaigns = Campaigns.find({_id:this._id}).fetch();
+    var brands2 = Brands.find({_id:campaigns[0].brands[0]}).fetch();
 
-            var len = campaigns.length;
-             
-            for (i = 0; i < len; i++) { 
-
-            var brands2 = Brands.find({_id:campaigns[0].brands[0]}).fetch();
-
-            campaigns[i].fileId = brands2[i].fileId;
-
-            };
+    campaigns[0].fileId = brands2[0].fileId;
 
     return campaigns[0]
+    },
+
+    posts2: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
+
+    var len = campaigns[0].posts.length;
+             
+    for (i = 0; i < len; i++) { 
+
+    if(campaigns[0].posts[i].social == "Twitter"){
+
+    campaigns[0].posts[i].social = "twitter-square";
+
+    }
+
+    if(campaigns[0].posts[i].social == "Instagram"){
+        
+    campaigns[0].posts[i].social = "instagram";
+
+    }
+
+    };
+
+
+
+    return campaigns[0].posts
     },
     countposts: function () {
     // var array = [{name:"Hello World"}];
@@ -189,9 +232,32 @@ Template.influencerCampaignsDetail.helpers({
 
     return campaigns[0].posts.length;
     },
+     percentcomplete: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
+
+    var total = campaigns[0].posts.length;
+    var sum = 0;
+
+    for (i = 0; i < total; i++) { 
+
+    if(campaigns[0].posts[i].status == true){
+
+    var sum = sum + 1;
+
+    }
+
+    };
+
+    var percentcomplete = sum/total;
+    var percentcomplete = Math.round(percentcomplete * 100);
+    return percentcomplete
+
+
+    },
     totalprofit: function () {
     // var array = [{name:"Hello World"}];
-    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
 
             var len = campaigns.length;
             var sum = 0;
@@ -205,7 +271,202 @@ Template.influencerCampaignsDetail.helpers({
     },
     campaignsactive: function () {
     // var array = [{name:"Hello World"}];
-    var campaigns = Campaigns.find({user:Meteor.userId()}).fetch();
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
+
+    return campaigns
+    },
+
+});
+
+
+Template.influencerCampaignsComplete.helpers({
+
+    user: function () {
+
+        var user = Meteor.users.find().fetch();
+        return user[0]
+    },
+
+    profile: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        return profile[0]
+    },
+    screenname2: function () {
+
+        var screenname = user[0].services.twitter.screenName;
+        return screenname;
+    },
+    datatwitter: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        // var twitteraccount = profile[0].twitteracccount;
+        var screenname = Meteor.user().services.twitter.screenName;
+        var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+        return datatwitter[0]
+    },
+    datainstagram: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        var screenname = Meteor.user().services.instagram.username;
+        var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
+        return datainstagram[0]
+    },
+     brandsname: function () {
+    // var array = [{name:"Hello World"}];
+    var profile = Profile.find({userId:Meteor.userId()}).fetch();
+    var brands = profile[0].brands;
+    var brands2 = Brands.find({name:{$in: brands}}).fetch();
+    // var brands2 = Brands.find().fetch();
+    var brands2 = _.sortBy(brands2, "name");
+
+    return brands2
+    },
+    campaigns: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:true}).fetch();
+
+            var len = campaigns.length;
+             
+            for (i = 0; i < len; i++) { 
+
+            var brands2 = Brands.find({_id:campaigns[i].brands[0]}).fetch();
+
+            campaigns[i].fileId = brands2[0].fileId;
+            };
+
+    return campaigns
+    },
+        totalprofit: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:true}).fetch();
+
+            var len = campaigns.length;
+            var sum = 0;
+             
+            for (i = 0; i < len; i++) { 
+            var sum = campaigns[i].budget + sum;
+            
+            };
+
+    return sum
+    },
+    campaignsactive: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:true}).fetch();
+
+    return campaigns
+    },
+    percentcomplete: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
+
+    var total = campaigns[0].posts.length;
+    var sum = 0;
+
+    for (i = 0; i < total; i++) { 
+
+    if(campaigns[0].posts[i].status == true){
+
+    var sum = sum + 1;
+
+    }
+
+    };
+
+    var percentcomplete = sum/total;
+    var percentcomplete = Math.round(percentcomplete * 100);
+    return percentcomplete
+
+
+    },
+
+});
+
+Template.influencerCampaignsDetailComplete.helpers({
+
+    campaigns: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
+    var brands2 = Brands.find({_id:campaigns[0].brands[0]}).fetch();
+
+    campaigns[0].fileId = brands2[0].fileId;
+
+    return campaigns[0]
+    },
+
+    posts2: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
+
+    var len = campaigns[0].posts.length;
+             
+    for (i = 0; i < len; i++) { 
+
+    if(campaigns[0].posts[i].social == "Twitter"){
+
+    campaigns[0].posts[i].social = "twitter-square";
+
+    }
+
+    if(campaigns[0].posts[i].social == "Instagram"){
+        
+    campaigns[0].posts[i].social = "instagram";
+
+    }
+
+    };
+
+
+
+    return campaigns[0].posts
+    },
+    countposts: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
+
+    return campaigns[0].posts.length;
+    },
+     percentcomplete: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({_id:this._id}).fetch();
+
+    var total = campaigns[0].posts.length;
+    var sum = 0;
+
+    for (i = 0; i < total; i++) { 
+
+    if(campaigns[0].posts[i].status == true){
+
+    var sum = sum + 1;
+
+    }
+
+    };
+
+    var percentcomplete = sum/total;
+    var percentcomplete = Math.round(percentcomplete * 100);
+    return percentcomplete
+
+
+    },
+    totalprofit: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:true}).fetch();
+
+            var len = campaigns.length;
+            var sum = 0;
+             
+            for (i = 0; i < len; i++) { 
+            var sum = campaigns[i].budget + sum;
+            
+            };
+
+    return sum
+    },
+    campaignsactive: function () {
+    // var array = [{name:"Hello World"}];
+    var campaigns = Campaigns.find({user:Meteor.userId(), complete:true}).fetch();
 
     return campaigns
     },

@@ -40,7 +40,9 @@
             {{> afFieldInput name="social" type="select2" multiple=true}}
             {{> afQuickField name="budget"}}
             {{> afQuickField name="posts"}}
-
+            <div style="display: none;">
+            {{> afQuickField name="complete"}}
+            </div>
            
             <div align="right">
               <button type="submit" class="btn btn-primary">Guardar</button>           
@@ -76,19 +78,23 @@
         <div class="row">
         <div class="content tablecenter">
      <!--    {{> quickForm schema=schema collection="Meteor.users" doc=this id="ShowCampaigns" type="update"}}
- -->        {{#autoForm collection="Campaigns" doc=this id="ShowCampaignsAdmin2" type="update"}}
+
+ -->        
+<!-- {{> quickForm collection="Campaigns" doc=this id="ShowCampaignsAdmin2" type="update"}} -->
+ {{#autoForm collection="Campaigns" doc=this id="ShowCampaignsAdmin2" type="update"}}
           <fieldset>
           <legend></legend>
-            {{> afQuickField name="brands"}}
+            {{> afQuickField name="brands" value=this.brands.[0]}}
             {{> afQuickField name="name"}}
             {{> afQuickField name="description"}}
-            {{> afQuickField name="user"}}
+            {{> afQuickField name="user" value=this.user.[0]}}
             {{> afQuickField name="fromdate"}}
             {{> afQuickField name="todate"}}
             <label class="control-label">Redes Sociales</label>
             {{> afFieldInput name="social" type="select2" multiple=true}}
             {{> afQuickField name="budget"}}
             {{> afQuickField name="posts"}}
+            {{> afQuickField name="complete"}}
            
             <div align="right">
               <button type="button" class="btn btn-danger remove">Borrar</button>

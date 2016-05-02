@@ -9,6 +9,10 @@ body {
 	/*background: none repeat scroll 0% 0% #000053;*/
 }
 
+.highcharts-container {
+width: 100% !important
+}
+
 .login-box-body {
 
 	background: #000053;
@@ -71,6 +75,11 @@ h3.gradientbg {
 a {
 
 	color: #000053;
+}
+
+.twtrue{
+	
+	color: #55acee;
 }
 .btn-primary:hover {
 
