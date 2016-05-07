@@ -34,6 +34,7 @@
 								<div class="col-xs-12">
 									
 										<h5>Agrega una nueva marca</h5>
+										{{#if profile}}
 											{{#autoForm id="profile2" doc=this type="update" collection="Profile"}}
 									  	<fieldset>
 									      <legend></legend>
@@ -47,6 +48,21 @@
 									    <button type="submit" class="btn btn-premium sm">Actualizar</button>
 									    </p>
 									  {{/autoForm}}
+									  {{else}}
+									  	{{#autoForm id="profile2" type="insert" collection="Profile"}}
+									  	<fieldset>
+									      <legend></legend>
+									      {{> afFieldInput name="brands" type="select2" multiple=true select2Options=s2Opts}}
+									      
+									      <span style="display: none">
+									      {{> afQuickField name='userId' value=user._id}} 
+									      </span>
+									    </fieldset>
+									    <p>
+									    <button type="submit" class="btn btn-premium sm">Actualizar</button>
+									    </p>
+									  {{/autoForm}}
+									  {{/if}}
 			
 								</div><!-- /.col-xs-12 -->
 							</div><!-- /.row -->
@@ -73,8 +89,9 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-12">
-									
+										
 										<h5>Agrega nuevos intereses</h5>
+										{{#if profile}}
 										{{#autoForm id="profile2" doc=this type="update" collection="Profile"}}
 									  	<fieldset>
 									      <legend></legend>
@@ -88,6 +105,21 @@
 									    <button type="submit" class="btn btn-premium sm">Actualizar</button>
 									    </p>
 									  {{/autoForm}}
+									  {{else}}
+									  	{{#autoForm id="profile2" type="insert" collection="Profile"}}
+									  	<fieldset>
+									      <legend></legend>
+									      {{> afFieldInput name="interests" type="select2" multiple=true select2Options=s2Opts2}}
+									      
+									      <span style="display: none">
+									      {{> afQuickField name='userId' value=user._id}} 
+									      </span>
+									    </fieldset>
+									    <p>
+									    <button type="submit" class="btn btn-premium sm">Actualizar</button>
+									    </p>
+									  {{/autoForm}}
+									  {{/if}}
 								
 								</div><!-- /.col-xs-12 -->
 							</div><!-- /.row -->

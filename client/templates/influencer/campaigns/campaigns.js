@@ -63,21 +63,19 @@ Template.influencerCampaigns.events({
         var instagram = user1[0].services.instagram;
 
         Meteor.loginWithTwitter(function (err) {
-          if (err) {
+            if (err) {
             console.log('login failed', err);
 
-          }
-                    var user2 = Meteor.users.find({_id:Meteor.userId()}).fetch();
-                    var twitter = user2[0].services.twitter;
-                     Meteor.users.update({_id:olduserid},
-                      { $set: {  "services" : { "instagram" : instagram, "twitter" : twitter }}});
-
-                    Meteor.users.remove({_id:Meteor.userId()});
-
-
             }
-      );
-        
+            var user2 = Meteor.users.find({_id:Meteor.userId()}).fetch();
+            var twitter = user2[0].services.twitter;
+            Meteor.users.update({_id:olduserid},
+            { $set: {  "services" : { "instagram" : instagram, "twitter" : twitter }}});
+
+            Meteor.users.remove({_id:Meteor.userId()});
+
+        });
+
     }
 
 });
@@ -117,44 +115,47 @@ Template.influencerCampaigns.helpers({
         var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
         return datainstagram[0]
     },
-     brandsname: function () {
-    // var array = [{name:"Hello World"}];
-    var profile = Profile.find({userId:Meteor.userId()}).fetch();
-    var brands = profile[0].brands;
-    var brands2 = Brands.find({name:{$in: brands}}).fetch();
-    // var brands2 = Brands.find().fetch();
-    var brands2 = _.sortBy(brands2, "name");
 
-    return brands2
+    brandsname: function () {
+        // var array = [{name:"Hello World"}];
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        var brands = profile[0].brands;
+        var brands2 = Brands.find({name:{$in: brands}}).fetch();
+        // var brands2 = Brands.find().fetch();
+        var brands2 = _.sortBy(brands2, "name");
+
+        return brands2
     },
+
     campaigns: function () {
-    // var array = [{name:"Hello World"}];
-    var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
+        // var array = [{name:"Hello World"}];
+        var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
 
-            var len = campaigns.length;
-             
-            for (i = 0; i < len; i++) { 
+        var len = campaigns.length;
+         
+        for (i = 0; i < len; i++) { 
 
-            var brands2 = Brands.find({_id:campaigns[i].brands[0]}).fetch();
+        var brands2 = Brands.find({_id:campaigns[i].brands[0]}).fetch();
 
-            campaigns[i].fileId = brands2[0].fileId;
-            };
+        campaigns[i].fileId = brands2[0].fileId;
 
-    return campaigns
+        };
+
+        return campaigns
     },
-        totalprofit: function () {
-    // var array = [{name:"Hello World"}];
-    var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
+    totalprofit: function () {
+        // var array = [{name:"Hello World"}];
+        var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
 
-            var len = campaigns.length;
-            var sum = 0;
-             
-            for (i = 0; i < len; i++) { 
-            var sum = campaigns[i].budget + sum;
-            
-            };
+        var len = campaigns.length;
+        var sum = 0;
+         
+        for (i = 0; i < len; i++) { 
+        var sum = campaigns[i].budget + sum;
+        
+        };
 
-    return sum
+        return sum
     },
     campaignsactive: function () {
     // var array = [{name:"Hello World"}];
@@ -469,6 +470,25 @@ Template.influencerCampaignsDetailComplete.helpers({
     var campaigns = Campaigns.find({user:Meteor.userId(), complete:true}).fetch();
 
     return campaigns
+    },
+
+});
+
+
+Template.influencerOffers.helpers({
+
+    campaigns: function () {
+        
+        var campaigns = Campaigns.find({user:Meteor.userId(), complete:false}).fetch();
+
+        var len = campaigns.length;
+         
+        for (i = 0; i < len; i++) { 
+            var brands2 = Brands.find({_id:campaigns[i].brands[0]}).fetch();
+            campaigns[i].fileId = brands2[0].fileId;
+        };
+
+        return campaigns
     },
 
 });

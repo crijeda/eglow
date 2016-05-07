@@ -16,5 +16,19 @@ Meteor.methods({
       subject: subject,
       text: text
     });
+  },
+  WelcomeEmail: function (to) {
+    check([to], [String]);
+
+    // Let other method calls from the same client start running,
+    // without waiting for the email sending to complete.
+    this.unblock();
+
+    Email.send({
+      to: to,
+      from: 'soporte@eglow.cl',
+      subject: 'Bienvenido a Eglow',
+      text: 'Aqui debería ir el texto de bienvenida con un HTML correspondiente'
+    });
   }
 });

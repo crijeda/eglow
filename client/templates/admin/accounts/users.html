@@ -95,43 +95,51 @@
   
 </template>
 <template name="login">
-<body class="hold-transition login-page bgblue">
+<body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
     <!-- <a href=""><b>Whizzcloud</b>®</a> -->
-    <img src="images/eglow.png" style="height: 90px;">
+    <img src="images/eglow.png" style="height: 90px;opacity: 0.6;">
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Iniciar Sesión</p>
+    <p class="login-box-msg" style="font-size: 18px; color:white;">INGRESO INFLUENCIADORES</p>
 
-    <form>
+<!--     <form>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" name="email">
+        <input type="email" class="form-control login" style="color:white;" placeholder="Email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control login" style="color:white;" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" value="Login">Ingresar</button>
+          <button type="submit" class="btn btn-block btn-flat login-btn" value="Login">Ingresar</button>
         </div>
       </div>
-    </form>
+    </form> -->
     <!-- {{> loginButtons}} -->
 
     <div class="social-auth-links text-center">
-      <p>- OR -</p>
+      <!-- <p>- OR -</p> -->
      <!--  <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Ingresar con
         Facebook</a> -->
-       <a href="#" class="btn btn-block btn-social btn-twitter btn-flat tw-login"><i class="fa fa-twitter"></i> Ingresar con
-        Twitter</a>
-        <a href="#" class="btn btn-block btn-social btn-instagram btn-flat insta-login"><i class="fa fa-instagram"></i> Ingresar con
-        Instagram</a>
+        <div class="row" style="margin-top: 20px;">
+       <a href="#" class="btn btn-block btn-social btn-twitter btn-flat tw-login"><i class="fa fa-twitter"></i> Iniciar Sesión con Twitter</a>
+       </div>
+       <div class="row" style="margin-top: 20px;">
+        <a href="#" class="btn btn-block btn-social btn-instagram btn-flat insta-login"><i class="fa fa-instagram"></i> Iniciar Sesión con Instagram</a>
+        </div>
      <!--  <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Ingresar con
         Google+</a> -->
+    <div class="row" style="margin-top: 20px;">
+    <span>
+    Al registrarte estarás aceptando los 
+    <a href="http://google.com" target="_blank" style="color: white;">Terminos y condiciones</a>
+    </span>
+    </div>
     </div>
     <!-- /.social-auth-links -->
 
@@ -158,11 +166,11 @@
 
     <form>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" name="email">
+        <input type="email" class="form-control login" placeholder="Email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control login" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
       </div>
       <div class="row">

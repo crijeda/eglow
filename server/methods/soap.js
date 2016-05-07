@@ -2,8 +2,11 @@ Meteor.methods({
 	'sincTwitterCommunity': function(){
         var url = 'http://52.38.21.30/digirepWebService/TwitterWebService.svc?wsdl';
         // var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        var dateFrom = moment().subtract(1, 'month').format("YYYY-MM-DDT00:00:00");
+        var dateTo = moment().format("YYYY-MM-DDT00:00:00");
+
 		var screenname = Meteor.user().services.twitter.screenName;
-		var args = {screenname: screenname, dateFrom: '2016-03-01T00:00:00', dateTo: '2016-03-31T00:00:00'};
+		var args = {screenname: screenname, dateFrom: dateFrom, dateTo: dateTo};
 
 		try {
 
@@ -39,7 +42,7 @@ Meteor.methods({
 	      });
 	        // DataTwitter.update(twid[0]._id, { $push: { GenderDistribution: data2.GenderDistribution }});
 			
-			console.log("CommunityStatistics success Synchronization");
+			console.log("Twitter Community success Synchronization");
 		}
 		catch (err) {
 		  if(err.error === 'soap-creation') {
@@ -56,8 +59,12 @@ Meteor.methods({
     	console.log("inside");
         var url = 'http://52.38.21.30/DigiRepWebservice/InstagramService.svc?wsdl';
         // var profile = Profile.find({userId:Meteor.userId()}).fetch();
+		
+		var dateFrom = moment().subtract(1, 'month').format("YYYY-MM-DDT00:00:00");
+        var dateTo = moment().format("YYYY-MM-DDT00:00:00");
+
 		var screenname = Meteor.user().services.instagram.username;
-		var args = {username: screenname, dateFrom: '2016-03-01T00:00:00', dateTo: '2016-03-31T00:00:00'};
+		var args = {screenname: screenname, dateFrom: dateFrom, dateTo: dateTo};
 
 		try {
 
@@ -122,18 +129,12 @@ Meteor.methods({
     },
 
     'sincTwitterHistorical': function(){
-    	var d = new Date();
-		var today = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
-    	("0" + d.getDate()).slice(-2) + "T" + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2)+ ":00";
-    	var lastweek = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
-    	("0"+(d.getDate()-7)).slice(-2) + "T" + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2)+ ":00";
-
-    	// console.log(today);
-    	// console.log(lastweek);
+    	var dateFrom = moment().subtract(1, 'month').format("YYYY-MM-DDT00:00:00");
+        var dateTo = moment().format("YYYY-MM-DDT00:00:00");
         var url = 'http://52.38.21.30/digirepWebService/TwitterWebService.svc?wsdl';
         // var profile = Profile.find({userId:Meteor.userId()}).fetch();
 		var screenname = Meteor.user().services.twitter.screenName;
-		var args = {screenname: screenname, dateFrom: lastweek, dateTo: today};
+		var args = {screenname: screenname, dateFrom: dateFrom, dateTo: dateTo};
 
 		try {
 
@@ -167,7 +168,7 @@ Meteor.methods({
 				}
 			});
 			// console.log(obj2)
-			//console.log("CommunityStatistics success Synchronization");
+			console.log("Historical Twitter Data Update");
 		}
 		catch (err) {
 		  if(err.error === 'soap-creation') {
@@ -181,15 +182,15 @@ Meteor.methods({
     },
 
     'sincInstagramHistorical': function(){
-    	var d = new Date();
-		var today = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
-    	("0" + d.getDate()).slice(-2) + "T" + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2)+ ":00";
-    	var lastweek = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
-    	("0"+(d.getDate()-7)).slice(-2) + "T" + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2)+ ":00";
-
-        var url = 'http://52.38.21.30/DigiRepWebservice/InstagramService.svc?wsdl'
-		var screenname = Meteor.user().services.instagram.username;
-		var args = {username: screenname, dateFrom: lastweek, dateTo: today};
+    	var dateFrom = moment().subtract(1, 'month').format("YYYY-MM-DDT00:00:00");
+        var dateTo = moment().format("YYYY-MM-DDT00:00:00");
+     
+        var screenname = Meteor.user().services.instagram.username;
+		var args = {username: screenname, dateFrom: dateFrom, dateTo: dateTo};
+        var url = 'http://52.38.21.30/DigiRepWebservice/InstagramService.svc?wsdl';
+		
+        console.log(dateFrom);
+        console.log(dateTo);
 
 		try {
 
@@ -199,12 +200,10 @@ Meteor.methods({
 
 		  var instad = DataInstagram.find({screenname: screenname}).fetch();
 
-		  //var obj = eval ("(" + result2 + ")");
 		  var obj2 = eval ("[" + result2 + "]");
 
-		  //var data = obj.CommunityStatistics[0];
 		  var data2 = obj2[0];
-		  //console.log(data2);
+		 
 			DataInstagram.update(instad[0]._id, {
 				$set: {
 					profileHistorical:[
@@ -219,8 +218,7 @@ Meteor.methods({
 					]
 				}
 			});
-			console.log(obj2)
-			//console.log("CommunityStatistics success Synchronization");
+			console.log("Historical Instagram Data Update");
 		}
 		catch (err) {
 		  if(err.error === 'soap-creation') {
@@ -240,19 +238,7 @@ Meteor.methods({
 		var args = {screenname: screenname};
 
 			try {
-			  // var client = Soap.createClient(url);
-			  // var result = client.rawUserSearch(args);
 
-			  // result2 = JSON.parse(result.rawUserSearchResult);
-
-			  // // console.log(result2);
-			  // var profileimage = result2['ProfileImageUrl'];
-			  // var twid = "mqZTgQXpDdjxkrkFS";
-
-			  // // var obj = eval ("(" + result2 + ")");
-			  // // console.log(obj.ProfileStatistics[0].Name);
-
-			  // console.log(profileimage);
 
 			  var client = Soap.createClient(url);
 			  var result = client.GetProfileStatistics(args);

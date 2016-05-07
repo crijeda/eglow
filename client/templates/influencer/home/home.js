@@ -98,6 +98,7 @@ Template.homeInfluencer.events({
 
 
 
+
 Template.homeInfluencer.helpers({
 
     user: function () {
@@ -149,8 +150,51 @@ Template.homeInfluencer.helpers({
         var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
         return datainstagram[0]
     },
+    text: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        var screenname = Meteor.user().services.instagram.username;
+        var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
+        var text = datainstagram[0].profilestatistics[0].qtytweets - datainstagram[0].profilestatistics[0].images;
+        return text
+    },
 
 });
+Template.exampleModal.events({
+
+    'click .intro': function (event) {
+         setTimeout(function(){
+            Modal.hide('exampleModal')
+            var profile = Profile.find({userId:Meteor.userId()}).fetch();
+            var email = profile[0].emailaccount;
+            Meteor.call('WelcomeEmail',
+            email);
+        })
+    }, 
+
+});
+
+Template.exampleModal.helpers({
+
+    profile: function () {
+
+        var profile = Profile.find({userId:Meteor.userId()}).fetch();
+        return profile[0];
+    },
+    user: function () {
+
+        var user = Meteor.users.find().fetch();
+        return user[0]
+    },
+
+});
+
+Profile.allow({
+    insert: function () { return true; },
+    update: function () { return true; },
+    remove: function () { return true; }
+});
+
 Template.homeInfluencer.pieDemo = function() {
 
     // 'external' data

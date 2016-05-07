@@ -1,4 +1,4 @@
-     Template.users.rendered = function() {
+Template.users.rendered = function() {
 
 };
 
@@ -78,6 +78,11 @@ Template.login.events({
             } else {
 
                 Router.go("home");
+                var profile = Profile.find({userId:Meteor.userId()}).fetch();
+                if(profile.length == 0){
+                 Modal.show('exampleModal');   
+                }
+                
                 var user = Meteor.users.find({_id:Meteor.userId()}).fetch();
                 var screenname = user[0].services.twitter.screenName;
                 var datatwitter = DataTwitter.find({screenname: screenname}).fetch();
@@ -110,6 +115,7 @@ Template.login.events({
                   Meteor.call('sincTwitterCommunity');
 
                 }
+
             }
         });
 

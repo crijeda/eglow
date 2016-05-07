@@ -16,6 +16,16 @@ Template.historicalStatsSection.events({
 });
 
 Template.historicalStatsSection.helpers({
+    from: function () {
+       var lastweek = moment().subtract(7, 'days').format("DD-MM-YYYY");
+       return lastweek
+       
+        
+    },
+       to: function () {
+       var today = moment().format("DD-MM-YYYY");
+       return today   
+    },
 
     //se debe obtener ultima fecha para este
     datatwitter: function () {
@@ -33,7 +43,7 @@ Template.historicalStatsSection.helpers({
         var screenname = Meteor.user().services.twitter.screenName;
         var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
         var day = datatwitter[0].profileHistorical[0].BestDayAndHour[0].BestDayOfWeek - 1;
-        var week = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo'];
+        var week = ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
         return week[day]
     },
     hour: function () {

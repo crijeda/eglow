@@ -101,6 +101,16 @@ Template.myCommunitySection.helpers({
         }
         
     },
+       from: function () {
+       var lastweek = moment().subtract(1, 'month').format("DD-MM-YYYY");
+       return lastweek
+       
+        
+    },
+       to: function () {
+       var today = moment().format("DD-MM-YYYY");
+       return today   
+    },
 
 
 });

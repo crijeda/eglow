@@ -1,12 +1,68 @@
 body {
-	font-family: 'Questrial', sans-serif;
-	/*background-color: #FFF;*/
-	background-color: #000053;	
+	font-family: 'Century Gothic';
+	background-color: #000053;
+	/*background: url(images/login_Influencer.png);
+	background-attachment: fixed;	*/
 	color: #484848;
 	/*height: 100%;*/	
 	/*overflow: hidden;*/
 	overflow-y:scroll;
 	/*background: none repeat scroll 0% 0% #000053;*/
+}
+body.loginBg{
+background: url(images/bgeglow.png);
+	background-attachment: fixed;	
+}
+.boxhome{
+ margin: 20px;
+ margin-top: 10px;
+ color:#000053;
+ text-align: center;
+}
+.tw-login{
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 16px;
+    text-align: center;
+
+}
+.tw-login:hover { 
+    background-color: #0097e2;
+    font-size: 16px;
+    text-align: center;
+
+}
+.insta-login{
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 16px;
+    text-align: center;
+
+
+}
+.login{
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 16px;
+    color: white;
+}
+.login-btn{
+   font-size: 17px;
+   background-color: rgba(0, 0, 0, 0.5);
+}
+.login-btn:hover{
+   font-size: 17px;
+   color:white;
+   background-color: rgba(0, 0, 0, 0.75);
+   /*border-color: #0073b7;*/
+}
+.interline{
+	margin-top: 15px;
+	font-size: 20px;
+	text-align: center;
+}
+.sizelogo{
+font-size: 45px;
 }
 
 .highcharts-container {
@@ -15,7 +71,9 @@ width: 100% !important
 
 .login-box-body {
 
-	background: #000053;
+	background-color: rgba(0, 0, 0, 0);
+    width: 150%;
+    margin-left: -25%;
 }
 
 .form-control {
@@ -474,14 +532,39 @@ footer p {
 
 
 /*views*/
-
+.chartboxtitleleft {
+	background: #ececfb;
+    color: #000053;
+    display: block;
+	position: relative;
+	border-right-style: solid;
+    border-color: white;
+    border-right-width: 15px;
+    border-radius: 5px;
+}
+.chartboxtitleright {
+	background: #ececfb;
+    color: #000053;
+    display: block;
+	position: relative;
+	border-left-style: solid;
+    border-color: white;
+    border-left-width: 15px;
+    border-radius: 5px;
+}
+.chartboxh2 {
+	background: #003366;
+    margin: 15px;
+    color: white;
+}
 
 .chartbox {
-	background: #efeeee;
-	height: 372px;
-	display: block;
-	position: relative;
+	background: #ececfb;
+	height: 342px;
+/*	display: block;
+	position: relative;*/
 	margin-bottom: 20px;
+	border-radius: 5px;
 }
 
 	.chartbox .pronto {
@@ -534,7 +617,7 @@ footer p {
 	}
 
 .chartbox.profile {
-	height: 336px;
+	height: 415px;
 }
 
 .chartbox.brands {
@@ -602,7 +685,7 @@ footer p {
 	}
 
 .chartbox.sm {
-	height: 160px;
+	height: 200px;
 	padding-top: 1px;
 }
 
@@ -619,6 +702,7 @@ footer p {
 		font-size: 14px;
 		text-align: center;
 		margin-top: 0px;
+		color:#000053;
 	}
 
 	.chartbox.single-number p {
@@ -629,6 +713,7 @@ footer p {
 	}
 	.chartbox.single-number p.sm {
 		font-size: 20px;
+		color:#000053;
 	}
 
 	.chartbox.single-number img {
@@ -637,8 +722,8 @@ footer p {
 	}
 
 	.chartbox.single-number i {
-		font-size: 36px;
-		color: #000053;
+		font-size: 30px;
+		color: #009999;
 		display: block;
 		margin-bottom: 10px;
 	}
@@ -748,8 +833,8 @@ footer p {
 }
 
 	.statistics h2 {
-		margin-top: 0px;
-		font-size: 24px;
+		margin-top: 15px;
+		font-size: 18px;
 	}
 
 .panel-shown {

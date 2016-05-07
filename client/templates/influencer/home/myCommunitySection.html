@@ -17,7 +17,7 @@
 	        				<div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i>
                                 </span>
-                                <input type="text" class="form-control" value="01-03-2016" id="datepicker-from-community">
+                                <input type="text" class="form-control" value="{{from}}" id="datepicker-from-community">
                             </div>
 	        			</div><!-- /.col-xs-3 -->
 	        			<div class="col-md-3 col-lg-3">
@@ -25,7 +25,7 @@
 	        				<div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i>
                                 </span>
-                                <input type="text" class="form-control" value="31-03-2016" id="datepicker-to-community">
+                                <input type="text" class="form-control" value="{{to}}" id="datepicker-to-community">
                             </div>
 	        			</div><!-- /.col-xs-3 -->
 	        			<div class="col-md-1">
@@ -275,12 +275,12 @@
 		        		<div class="row">
 				        	<div class="col-xs-12">
 				        		<div class="chartbox sm single-number division-bar">
-				        			<p><i class="fa fa-male"></i> <span id="data-community-male">{{datatwitter.profilecommunity.[0].GenderDistribution.[0].Male}}</span> | <span id="data-community-female">{{datatwitter.profilecommunity.[0].GenderDistribution.[0].Female}}</span> <i class="fa fa-female"></i></p>
+				        			<p><i class="fa fa-male"></i> <span id="data-community-male">{{percentmale}}%</span> | <span id="data-community-female">{{percentfemale}}%</span> <i class="fa fa-female"></i></p>
 				        			<div class="progresscontainer">
-					        			<div class="progress progress-striped active" id="data-male-percent" style="width: {{percentmale}}%;">
-	                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-	                                    </div><div class="progress progress-striped active" id="data-female-percent" style="width: {{percentfemale}}%;">
-	                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+					        			<div class="progress progress-striped" id="data-male-percent" style="width: {{percentmale}}%;background: #000053;">
+	                                        <div class="" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+	                                    </div><div class="progress progress-striped" id="data-female-percent" style="width: {{percentfemale}}%;background: gray;">
+	                                        <div class="" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
 	                                    </div>
 				        			</div>
 				        			<h3>Distribución de género<br>*De acuerdo a una muestra de <b><span id="data-community-gendertotal">{{totalgender}}</span> (<span id="data-community-genderpercent">{{percentgender}}</span>%)</b> seguidores.</h3>
@@ -319,7 +319,7 @@
                 <div class="chartbox profile interestbox topfollowers">
                     <div class="row">
                         <div class="col-xs-12">
-                            <h3 class="page-header gradientbg">Paises de la Comunidad</h3>
+                            <h3 class="page-header gradientbg">Locaciones</h3>
                         </div>
                     </div>
                     <div class="row">

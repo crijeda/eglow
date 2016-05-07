@@ -103,6 +103,12 @@
                             <span class="hidden label label-success">4</span>
                         </a>
                         <ul class="dropdown-menu menu">
+                         <li>
+                               <a href="{{ pathFor 'influencerOffers' }}">
+                                   <span>Ofertas de Campañas</span>
+                               </a>
+                           </li>
+
                             <li>
                                 <a href="{{ pathFor 'influencerCampaigns' }}">
                                     <span>Campañas activas</span>
@@ -145,16 +151,16 @@
                     </li> -->
 
                     <!-- // -->
-                    <li class="dropdown tasks-menu">
+                   <!--  <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope"></i>
                             <i class="caret"></i>
                             <span class="hidden label label-danger">9</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <!-- <li class="header">You have 9 tasks</li> -->
+                            <li class="header">You have 9 tasks</li>
                             <li>
-                                <!-- inner menu: contains the actual data -->
+                                inner menu: contains the actual data 
                                 <ul class="menu">
 
                                    <li>
@@ -197,7 +203,7 @@
                                 <a href="#"><b>Leer todos los mensajes </b><i class="fa fa-chevron-right"></i></a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <!-- // -->
 
                     <li class="dropdown">
@@ -357,6 +363,9 @@
                         <i class="fa fa-star"></i><span>Campañas</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="nav">
+                    <li>
+                           <a href="{{ pathFor 'influencerOffers' }}">Ofertas de Campañas</a>
+                       </li>
                         <li>
                             <a href="{{ pathFor 'influencerCampaigns' }}">Campañas Activas</a>
                         </li>
@@ -377,14 +386,14 @@
                     </ul>
                 </li> -->
 
-                <li>
+               <!--  <li>
                     <a href="#">
                         <i class="fa fa-star"></i><span>Mensajes</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="nav">
                         <li><a href="{{ pathFor 'meteorchat' }}">Mensajes de agencias</a></li>
                     </ul>
-                </li>
+                </li> -->
 
                 <li>
                     <a href="{{ pathFor 'influencer/help' }}">

@@ -28,6 +28,7 @@
 										{{#autoForm id="Billing1" doc=this type="update" collection="Billing"}}
 									  	<fieldset>
 									      <legend></legend>
+									      {{> afQuickField name='rut' placeholder='Ej. 10122122-1'}}
 									      {{> afQuickField name='address'}}
 									      {{> afQuickField name='bank' options=optionsbank}}
 									      {{> afQuickField name='account' options=optionsaccount}}
@@ -49,6 +50,7 @@
 									    {{#autoForm id="Billing" type="insert" collection="Billing"}}
 									  	<fieldset>
 									      <legend></legend>
+									      {{> afQuickField name='rut' placeholder='Ej. 10122122-1'}}
 									 	  {{> afQuickField name='address'}}
 									      {{> afQuickField name='bank' options=optionsbank}}
 									      {{> afQuickField name='account' options=optionsaccount}}

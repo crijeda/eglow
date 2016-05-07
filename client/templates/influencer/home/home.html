@@ -133,76 +133,106 @@
 							<i class="fa fa-facebook-official color" style="font-size: 40px;"></i>
 							<i class="fa fa-linkedin-square" style="font-size: 40px;"></i>
 						</span>
-                <h1 class="page-header gradientbg">Estadísticas</h1>
+                <!-- <h1 class="page-header gradientbg">Estadísticas</h1> -->
             </div>
             <!-- /.col-lg-12 -->
         </div>
         <div class="row statistics">
         	<div class="col-md-12 col-lg-12">
         		<div class="row">
-
+        		<div class="chartboxh2">
+        		<h2 style="margin-left: 5px;font-size: 25px;">Estadísticas</h2>
+        		</div>
+        		<div class="row" style="margin: 15px;">
+        				<div class="col-xs-6 col-md-6 chartboxtitleleft">
+		        			<h2>Twitter</h2>
+		        		</div>
+		        		<div class="col-xs-6 col-md-6 chartboxtitleright">
+		        			<h2>Instagram</h2>
+		        		</div>
+		        </div>
         	<!-- 	 <span class="pull-right">
         		 
 		        			 <button type="submit" class="btn btn-default sm testregister"><i class="ion-refresh"><h4>Registro de Usuario </h4></i></button>
 		        </span> -->
         		{{ # if datatwitter.screenname}}
         			<!-- TWITTER -->
-		        	<div class="col-xs-12">
-		        		<div class="row">
-		        			<div class="col-xs-12">
-		        			 <span class="pull-right">
+		        	<div class="col-xs-6 col-md-6">
+		        		<!-- <div class="row">
+		        			<div class="col-xs-12"> -->
+		        			<!--  <span class="pull-right">
 		        			 <button type="submit" class="btn btn-premium sm twconnect"><i class="fa fa-twitter"></i></button>
 		        			 <button type="submit" class="btn btn-premium sm sincTwitter"><i class="ion-refresh"></i></button>
 		        			 </span>
-		        			 <!-- <span class="pull-right">
+		        			 <span class="pull-right">
 		        			 <button type="submit" class="btn btn-premium sm test"><i class="ion-help"></i></button>
 		        			 </span> -->
-		        				<h2>Twitter</h2>{{ # if lastupdatetw}}<h5>Última Actualización: {{ lastupdatetw }}</h5>{{/if}}<!-- /.social tw -->
-		        			</div><!-- /.col-xs-12 -->
-		        		</div><!-- /.row -->
+		        			
+		        				<!-- {{ # if lastupdatetw}}<h5>Última Actualización: {{ lastupdatetw }}</h5>{{/if}} -->
+
+		        				<!-- /.social tw -->
+		        		<!-- 	</div>
+		        		</div> -->
 		        		<div class="row">
-				        	<div class="col-xs-6 col-md-4">
+				        	<div class="col-xs-12 col-md-4">
 				        		<div class="chartbox sm single-number">
-				        			<p class="sm"><i class="fa fa-users"></i><span id="data-total-followers">{{ datatwitter.profilestatistics.[0].qtyfollowers }}</span> | <span id="data-total-following">{{ datatwitter.profilestatistics.[0].qtyfollowing }}</span></p>
+				        		<h2 class="boxhome">Mi Perfil</h2>
+				        			<p class="sm"><i class="fa fa-users sizelogo"></i>
+				        			<div class="interline">	
+				        			<span id="data-total-followers">{{ datatwitter.profilestatistics.[0].qtyfollowers }}</span> | <span id="data-total-following">{{ datatwitter.profilestatistics.[0].qtyfollowing }}</span>
+				        			</div>
+				        			</p>
 				        			<h3>Seguidores | Seguidos</h3>
+				        			
 				        		</div><!-- /.chartbox -->
 				        	</div><!-- /.col-xs-6 -->
-				        	<div class="col-xs-6 col-md-3">
+				        	<div class="col-xs-12 col-md-4">
 				        		<div class="chartbox sm single-number">
-				        			<p class="sm"><i class="fa fa-star"></i><span id="data-total-favourite">{{ datatwitter.profilestatistics.[0].qtyfavorites }}</span> | <span id="data-total-retweets">{{ datatwitter.profilestatistics.[0].qtyretweets }}</span></p>
+				        		<h2 class="boxhome">Mis Acciones</h2>
+				        			<p class="sm"><i class="fa fa-star sizelogo"></i>
+									<div class="interline">	
+				        			<span id="data-total-favourite">{{ datatwitter.profilestatistics.[0].qtyfavorites }}</span> | <span id="data-total-retweets">{{ datatwitter.profilestatistics.[0].qtyretweets }}</span>
+				        			</div>
+				        			</p>
 				        			<h3>Favs | RTs</h3>
 				        		</div><!-- /.chartbox -->
 
 				        	</div><!-- /.col-xs-6 -->
-				        	<div class="col-xs-12 col-md-5">
+				        	<div class="col-xs-12 col-md-4">
+				        	<div></div>
 				        		<div class="chartbox sm single-number">
-				        			<div class="row">
-				        				<div class="col-xs-6">
-						        			<p><i class="fa fa-twitter"></i> <span id="data-total-tweets">{{ datatwitter.profilestatistics.[0].qtytweets }}</span></p>
+				        		<h2 class="boxhome" style="margin-bottom: 0px;">Tipo de Contenido</h2>
+
+				        			
+				        				<div class="col-xs-4 col-md-4">
+						        			<p class="sm"><i class="fa fa-twitter sizelogo"></i> 
+						        			<div class="interline">	
+						        			<span id="data-total-tweets">{{ datatwitter.profilestatistics.[0].qtytweets }}</span>
+						        			</div>
+						        			</p>
 						        			<h3>Tweets</h3>
 				        				</div><!-- /.col-xs-6 -->
-				        				<div class="col-xs-6 mediabox">
-				        					<div class="row">
-				        						<div class="col-xs-12">
-				        							<p><i class="fa fa-font"></i> <span id="data-total-text">{{ datatwitter.profilestatistics.[0].qtytweets }}</span></p>
-				        						</div><!-- /.col-xs-12 -->
-				        						<div class="col-xs-12">
-				        							<p><i class="fa fa-picture-o"></i> <span id="data-total-picture">{{ datatwitter.profilestatistics.[0].images }}</span></p>
-				        						</div><!-- /.col-xs-12 -->
-				        					</div><!-- /.row -->
-				        					<div class="row">
-				        						<div class="col-xs-12">
-						        					<h3>Tipo de contenidos</h3>
-				        							
-				        						</div><!-- /.col-xs-12 -->
-				        					</div><!-- /.row -->
-				        					
+				        				<div class="col-xs-4 col-md-4">
+						        			<p class="sm"><i class="fa fa-picture-o sizelogo"></i>
+						        			<div class="interline">	
+						        			<span id="data-total-tweets">{{ datatwitter.profilestatistics.[0].qtytweets }}</span>
+						        			</div>
+						        			</p>
+						        			<h3>Imagenes</h3>
+				        				</div><!-- /.col-xs-6 -->
+				        				<div class="col-xs-4 col-md-4">
+						        			<p class="sm"><i class="fa fa-video-camera sizelogo"></i> 
+						        			<div class="interline">	
+						        			<span id="data-total-tweets">{{ datatwitter.profilestatistics.[0].qtytweets }}</span>
+						        			</div>
+						        			</p>
+						        			<h3>Videos</h3>
 				        				</div><!-- /.col-xs-6 -->
 				        			</div><!-- /.row -->
 				        		</div><!-- /.chartbox -->
 				        	</div><!-- /.col-xs-6 -->
 		        		</div><!-- /.row -->
-		        	</div><!-- /.col-xs-4 -->
+		        	
 		        	{{else}}
 		        	<div class="col-xs-12">
 		        		<div class="row">
@@ -297,170 +327,6 @@
 					{{ /if }}
 				
 					
-
-		       	{{ # if profile.facebookaccount }}
-					<!-- FACEBOOK -->
-		        	<div class="col-xs-12">
-		        		<div class="row">
-		        			<div class="col-xs-12">
-		        				<h2>Facebook</h2><!-- /.social tw -->
-		        			</div><!-- /.col-xs-12 -->
-		        		</div><!-- /.row -->
-		        		<div class="row">
-			        			<div class="col-xs-6 col-md-3">
-					        		<div class="chartbox sm single-number">
-					        			<p><i class="fa fa-users"></i> <span id="data-facebook-fans">15.768</span></p>
-					        			<h3>Fans</h3>
-					        		</div><!-- /.chartbox -->
-			        			</div><!-- /.col-xs-12 -->
-			        			<div class="col-xs-6 col-md-3">
-					        		<div class="chartbox sm single-number">
-					        			<p><i class="fa fa-thumbs-o-up"></i> <span id="data-facebook-likes">1.576</span> | <span id="data-facebook-comments">2.569</span></p>
-					        			<h3>Me gusta | Comentarios</h3>
-					        		</div><!-- /.chartbox -->
-			        				
-			        			</div><!-- /.col-xs-12 -->
-					        	<div class="col-xs-12 col-md-6">
-					        		<div class="chartbox sm single-number">
-					        			<div class="row">
-					        				<div class="col-xs-6">
-							        			<p><i class="fa fa-picture-o"></i> <span id="data-total-facebook-posts">5.276</span></p>
-							        			<h3>Publicaciones</h3>
-					        				</div><!-- /.col-xs-6 -->
-					        				<div class="col-xs-6 mediabox">
-					        					<div class="row">
-					        						<div class="col-xs-6">
-					        							<p><i class="fa fa-film"></i> <span id="data-facebook-video">11</span></p>
-					        						</div><!-- /.col-xs-6 -->
-					        						<div class="col-xs-6">
-					        							<p><i class="fa fa-music"></i> <span id="data-facebook-audio">22</span></p>
-					        						</div><!-- /.col-xs-6 -->
-					        					</div><!-- /.row -->
-					        					<div class="row">
-					        						<div class="col-xs-6">
-					        							<p><i class="fa fa-picture-o"></i> <span id="data-facebook-picture">33</span></p>
-					        						</div><!-- /.col-xs-6 -->
-					        						<div class="col-xs-6">
-					        							<p><i class="fa fa-font"></i> <span id="data-facebook-text">44</span></p>
-					        						</div><!-- /.col-xs-6 -->
-					        					</div><!-- /.row -->
-					        					<div class="row">
-					        						<div class="col-xs-12">
-							        					<h3>Tipo de contenidos</h3>
-					        							
-					        						</div><!-- /.col-xs-12 -->
-					        					</div><!-- /.row -->
-					        					
-					        				</div><!-- /.col-xs-6 -->
-					        			</div><!-- /.row -->
-					        		</div><!-- /.chartbox -->
-					        	</div><!-- /.col-xs-6 -->
-
-		        		</div><!-- /.row -->
-		        	</div><!-- /.col-xs-4 -->
-					{{ else }}
-					<div class="col-xs-12">
-		        		<div class="row">
-		        			<div class="col-xs-12">
-		        				<h2>Facebook</h2>
-		        			</div>
-		        		</div>
-		        		<div class="row">
-			        	 <div class="col-xs-12 col-md-12">
-					        		<div class="chartbox sm single-number">
-					        			<p><i class="fa fa-facebook-official color" style="color: #000053;"></i> <span id="data-facebook-fans">PRONTO</span></p>
-					        			<h3></h3>
-					        		</div>
-			        	</div>
-			        	</div>			
-					 </div>
-
-							
-					{{ /if }}
-
-					{{ # if profile.linkedinaccount }}
-					<!-- LINKEDIN -->
-		        	<div class="col-xs-12">
-		        		<div class="row">
-		        			<div class="col-xs-12">
-		        				<h2>Linkedin</h2><!-- /.social tw -->
-		        			</div><!-- /.col-xs-12 -->
-		        		</div><!-- /.row -->
-		        		<div class="row">
-				        	<div class="col-xs-6 col-md-3">
-				        		<div class="chartbox sm single-number">
-				        			<p><i class="fa fa-book"></i> 15.768</p>
-				        			<h3>Contactos</h3>
-				        		</div><!-- /.chartbox -->
-				        	</div><!-- /.col-xs-3 -->
-				        	<div class="col-xs-6 col-md-3">
-				        		<div class="chartbox sm single-number">
-				        			<p><i class="fa fa-check-square-o"></i> 157</p>
-				        			<h3>Recomendaciones</h3>
-				        		</div><!-- /.chartbox -->
-
-				        	</div><!-- /.col-xs-3 -->
-				        	<div class="col-xs-12 col-md-6">
-				        		<div class="chartbox sm single-number">
-				        			<div class="row">
-				        				<div class="col-xs-6">
-						        			<p><i class="fa fa-file-text-o"></i> 15.768</p>
-						        			<h3>Publicaciones</h3>
-				        				</div><!-- /.col-xs-6 -->
-				        				<div class="col-xs-6 mediabox">
-				        					<div class="row">
-				        						<div class="col-xs-6">
-				        							<p><i class="fa fa-film"></i> 12</p>
-				        						</div><!-- /.col-xs-6 -->
-				        						<div class="col-xs-6">
-				        							<p><i class="fa fa-music"></i> 6</p>
-				        						</div><!-- /.col-xs-6 -->
-				        					</div><!-- /.row -->
-				        					<div class="row">
-				        						<div class="col-xs-6">
-				        							<p><i class="fa fa-picture-o"></i> 18</p>
-				        						</div><!-- /.col-xs-6 -->
-				        						<div class="col-xs-6">
-				        							<p><i class="fa fa-font"></i> 9</p>
-				        						</div><!-- /.col-xs-6 -->
-				        					</div><!-- /.row -->
-				        					<div class="row">
-				        						<div class="col-xs-12">
-						        					<h3>Tipo de contenidos</h3>
-				        							
-				        						</div><!-- /.col-xs-12 -->
-				        					</div><!-- /.row -->
-				        					
-				        				</div><!-- /.col-xs-6 -->
-				        			</div><!-- /.row -->
-				        		</div><!-- /.chartbox -->
-				        	</div><!-- /.col-xs-6 -->
-		        		</div><!-- /.row -->
-		        	</div><!-- /.col-xs-4 -->
-
-
-
-        		
-
-					{{ else }}
-					<div class="col-xs-12">
-		        		<div class="row">
-		        			<div class="col-xs-12">
-		        				<h2>Linkedin</h2>
-		        			</div>
-		        		</div>
-		        		<div class="row">
-			        	 <div class="col-xs-12 col-md-12">
-					        		<div class="chartbox sm single-number">
-					        			<p><i class="fa fa-linkedin-square" style="color: #000053;"></i> <span id="data-facebook-fans">PRONTO</span></p>
-					        			<h3></h3>
-					        		</div>
-			        	</div>
-			        	</div>		
-					 </div>
-
-							
-					{{ /if }}
 			 </div><!-- /.row -->
         	</div><!-- /.col-xs-6 -->
       
@@ -560,17 +426,36 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title">Advertencia!</h4>
+                    <h4 class="modal-title">¡Bienvenido a Eglow!</h4>
                 </div>
 
                 <div class="modal-body">
-                    <p>Al sincronizar una red social adicional se deslogueara tu perfil, una ves sincronizado podras acceder desde cualquier cuenta ingresada.</p>
+
+                    <p>¡Nos interesa mantenerte al tanto de propuestas de distintas Marcas, dejanos tu E-mail y te contactaremos muy pronto. Mientras tanto revisa toda la info de tu perfil!</p>
+									   
+									    {{#autoForm id="profileintro" type="insert" collection="Profile"}}
+									  	<fieldset>
+									      <legend></legend>
+						
+									      {{> afQuickField name='emailaccount'}}
+				
+									    <!--    {{> afQuickField name='twitteracccount'}}
+									      {{> afQuickField name='instagramaccount'}} -->
+									      <span style="display: none">
+									      {{> afQuickField name='userId' value=user._id}} 
+									      </span>
+									    </fieldset>
+									     <p>
+									    <button type="submit" class="btn btn-premium sm intro">Actualizar</button>
+									    </p>
+									  {{/autoForm}}
+
                 </div>
 
-                <div class="modal-footer">
+           <!--      <div class="modal-footer">
                 	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                </div>
+                </div> -->
 
             </div>
         </div>
