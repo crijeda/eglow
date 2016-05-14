@@ -10,9 +10,16 @@ body {
 	/*background: none repeat scroll 0% 0% #000053;*/
 }
 body.loginBg{
-background: url(images/bgeglow.png);
-	background-attachment: fixed;	
+background: url(images/bgeglow2.jpg) no-repeat center center fixed;
+     -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
 }
+.rect[Attributes Style] {
+    height: 400;
+}
+
 .boxhome{
  margin: 20px;
  margin-top: 10px;
@@ -553,7 +560,7 @@ footer p {
     border-radius: 5px;
 }
 .chartboxh2 {
-	background: #003366;
+	background: #000053;
     margin: 15px;
     color: white;
 }
@@ -617,7 +624,7 @@ footer p {
 	}
 
 .chartbox.profile {
-	height: 415px;
+	height: 315px;
 }
 
 .chartbox.brands {
@@ -638,6 +645,7 @@ footer p {
 
 	.chartbox.interestbox p {
 		margin-top: 10px;
+		color: #000053;
 	}
 
 	.chartbox.interestbox.interestbrands p {
@@ -645,6 +653,9 @@ footer p {
 	}
 
 .chartbox.topfollowers {
+	height: 60px;
+}
+.chartbox.topfollowers2 {
 	height: 400px;
 }
 
@@ -685,6 +696,10 @@ footer p {
 	}
 
 .chartbox.sm {
+	height: 150px;
+	padding-top: 1px;
+}
+.chartbox.sm2 {
 	height: 200px;
 	padding-top: 1px;
 }
@@ -828,14 +843,51 @@ footer p {
 	}
 
 
+
 .statistics {
-	/*margin-bottom: 30px;*/
+/*margin-bottom: 30px;*/
 }
 
-	.statistics h2 {
-		margin-top: 15px;
-		font-size: 18px;
-	}
+.statistics h2 {
+margin-top: 15px;
+margin-left: 5px;
+font-size: 25px
+}
+
+.statistics .title-social{
+margin: 15px;
+margin-bottom: 5px;
+}
+
+.statistics .col-md-4{
+padding-left: 2px;
+padding-right: 2px;
+}
+
+.statistics .col-md-4:first-child{
+padding-left: 15px;
+}
+
+.statistics .col-md-4:last-child{
+padding-right: 15px;
+}
+
+.statistics .col-md-4 h2.boxhome{
+font-size:18px;
+margin-bottom: 0;
+}
+
+.statistics .chartbox h3{
+font-size: 12px;
+}
+
+.statistics .chartbox .fa{
+color: #009999 !important;
+}
+
+.chartbox.single-number i {
+margin-bottom: 0;
+}
 
 .panel-shown {
 	background: #000053;
@@ -914,7 +966,7 @@ footer p {
 	}
 
 	.filterbox {
-		background: #efeeee;
+		background: #ececfb;
 		margin-bottom: 15px;
 	}
 

@@ -17,11 +17,27 @@ Template.historicalStatsSection.events({
 
 Template.historicalStatsSection.helpers({
     from: function () {
-       var lastweek = moment().subtract(7, 'days').format("DD-MM-YYYY");
+       var lastweek = moment().subtract(1, 'month').format("DD-MM-YYYY");
        return lastweek
        
         
     },
+    test: function () {
+         var data = new Array();
+         var screenname = Meteor.user().services.twitter.screenName;
+         var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+         var historicaldata = datatwitter[0].profileHistorical[0].HistoricalData;
+         // 'external' data
+         var len = historicaldata.length;
+     
+    for (i = 0; i < len; i++) { 
+     data.push({
+        favorites_count: historicaldata[i].favorites_count,
+        followers_count: historicaldata[i].followers_count
+    });
+    return data 
+    }},
+
        to: function () {
        var today = moment().format("DD-MM-YYYY");
        return today   
@@ -180,7 +196,7 @@ Template.wordcloudtw.rendered = function() {
             });
         }
 
-        console.log(tags)
+        // console.log(tags)
 
         var fill = d3.scale.category20b();
 
@@ -389,4 +405,190 @@ Template.wordcloudinstagram.rendered = function() {
 
     }, false);
 
+};
+
+Template.historicalStatsSection.wctw = function() {
+
+     var data = new Array();
+         var screenname = Meteor.user().services.twitter.screenName;
+         var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+         var wordcloud = datatwitter[0].profileHistorical[0].WordCloud;
+         // 'external' data
+         var len = wordcloud.length;
+     
+    for (i = 0; i < len; i++) { 
+     data.push({
+        name: wordcloud[i]._word,
+        y: wordcloud[i]._count,
+        color: '#009999'
+    });
+
+    }
+
+    return {
+        chart: {
+            plotBackgroundColor: '#ececfb',
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: data,
+        }]
+    };
+};
+Template.historicalStatsSection.wcinsta = function() {
+
+     var data = new Array();
+         var screenname = Meteor.user().services.instagram.username;
+         var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
+         var wordcloud = datainstagram[0].profileHistorical[0].WordCloud;
+         // 'external' data
+         var len = wordcloud.length;
+     
+    for (i = 0; i < len; i++) { 
+     data.push({
+        name: wordcloud[i]._word,
+        y: wordcloud[i]._count,
+        color: '#009999'
+    });
+
+    }
+
+    return {
+        chart: {
+            plotBackgroundColor: '#ececfb',
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: data,
+        }]
+    };
+};
+
+Template.historicalStatsSection.twline = function() {
+
+       var data = new Array();
+         var screenname = Meteor.user().services.twitter.screenName;
+         var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+         var historicaldata = datatwitter[0].profileHistorical[0].HistoricalData;
+         // 'external' data
+         var len = historicaldata.length;
+     
+    for (i = 0; i < len; i++) { 
+     data.push({
+        favorites_count: historicaldata[i].favorites_count,
+        followers_count: historicaldata[i].followers_count,
+        date:historicaldata[i].Date
+    });
+    }
+    
+    dataSeries = [
+            {
+                name: 'Followers',
+                color: '#000053',
+                // data: [12, 15, 25, 27, 10, 6, 5]
+                data: _.pluck(historicaldata,'followers_count')
+
+            }, {
+                name: 'Favorites',
+                color: '#009999',
+                data: _.pluck(historicaldata,'favorites_count')
+            }
+        ];
+
+    responseDates = _.pluck(historicaldata,'Date')
+
+    xAxisDates = _.map(responseDates,function(e){
+        return e.substring(8, 10) + "/" + e.substring(5, 7) + "/" +  e.substring(0, 4)
+    })
+
+    return {
+       
+        title: {
+            text: '',
+            x: -20 //center
+        },
+        credits: {
+            enabled: false
+        },
+        subtitle: {
+            text: '',
+            x: -20
+        },
+        xAxis: {
+            categories: xAxisDates,
+            gridLineWidth: 0,
+        },
+        yAxis: {
+            title: {
+                text: ''
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: dataSeries
+    };
 };

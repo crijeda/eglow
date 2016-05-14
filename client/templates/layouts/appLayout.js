@@ -92,7 +92,17 @@ Template.appLayout.events({
     'click .logout': function(event){
         event.preventDefault();
         Meteor.logout();
-        Router.go('login');
+        var rol = Meteor.user().roles;
+        if(rol == 'Admin'){
+         Router.go('loginbrand');   
+        }
+        if(rol == 'Influencer'){
+         Router.go('login');   
+        }
+        if(rol == 'Business'){
+         Router.go('loginbrand');   
+        }
+        
     },
 
 

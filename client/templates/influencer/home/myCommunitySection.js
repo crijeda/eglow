@@ -289,7 +289,7 @@ Template.twitterCommunity.pielocation = function() {
      data.push({
         name: location[i].Location,
         y: location[i].Qty,
-        color: '#c7c6c6'
+        color: '#009999'
     });
 
     }
@@ -300,43 +300,54 @@ Template.twitterCommunity.pielocation = function() {
         //     plotBorderWidth: null,
         //     plotShadow: false,
         // },
-        chart:{
-            backgroundColor: "rgba(255, 255, 255, 0)",
-            plotBackgroundColor: "#EEE"
+        chart: {
+            polar: true,
+            type: 'line',
+            plotBackgroundColor: '#ececfb',
+        },
+
+        title: {
+            text: '',
+            x: -80
         },
         credits: {
             enabled: false
         },
-        title: {
-            text: ''
+        pane: {
+            size: '60%'
         },
+
+        xAxis: {
+            categories: _.pluck(location,'Location'),
+            tickmarkPlacement: 'on',
+            lineWidth: 0
+        },
+
+        yAxis: {
+            gridLineInterpolation: 'polygon',
+            lineWidth: 0,
+            min: 0,
+            gridLineWidth: 0,
+        },
+
         tooltip: {
-            pointFormat: '<b>{point.percentage:.1f}%</b>'
+            shared: true,
+            pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
         },
-        plotOptions: {
-            pie: {
-                // allowPointSelect: true,
-                cursor: 'pointer',
-                center: ['50%', '20%'],
-                dataLabels: {
-                    enabled: true,
-                    // format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    // connectorColor: 'silver',
-                    distance: 50,
-                    style: {
-                        fontWeight: 'bold',
-                        // color: "#484848"
-                        color: 'white',
-                        textShadow: '0px 1px 2px black'
-                    }
-                }
-            }
+
+        legend: {
+            align: 'right',
+            verticalAlign: 'top',
+            y: 70,
+            layout: 'vertical',
+            enabled: false,
         },
+
         series: [{
-            type: 'pie',
-            name: 'genre',
-            innerSize: '70%',
-            data:data
+            name: 'Personas',
+            data: _.pluck(location,'Qty'),
+            pointPlacement: 'on'
         }]
+
     };
 };

@@ -59,7 +59,7 @@ function builtLine(HistoricalData, service) {
         
         chart: {
             type: 'line',
-            plotBackgroundColor: "#EEE",
+            plotBackgroundColor: "",
             //margin: 0,
             width:width,
 
