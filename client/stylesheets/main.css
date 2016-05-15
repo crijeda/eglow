@@ -1,68 +1,12 @@
-body {
-	font-family: 'Century Gothic';
-	background-color: #000053;
-	/*background: url(images/login_Influencer.png);
-	background-attachment: fixed;	*/
-	color: #484848;
-	/*height: 100%;*/	
-	/*overflow: hidden;*/
-	overflow-y:scroll;
-	/*background: none repeat scroll 0% 0% #000053;*/
-}
-body.loginBg{
-background: url(images/bgeglow2.jpg) no-repeat center center fixed;
-     -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
-}
-.rect[Attributes Style] {
-    height: 400;
-}
+
 
 .boxhome{
- margin: 20px;
- margin-top: 10px;
- color:#000053;
- text-align: center;
+	margin: 20px;
+	margin-top: 10px;
+	color:white;
+	text-align: center;
 }
-.tw-login{
-    border-color: white;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 16px;
-    text-align: center;
 
-}
-.tw-login:hover { 
-    background-color: #0097e2;
-    font-size: 16px;
-    text-align: center;
-
-}
-.insta-login{
-    border-color: white;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 16px;
-    text-align: center;
-
-
-}
-.login{
-    border-color: white;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 16px;
-    color: white;
-}
-.login-btn{
-   font-size: 17px;
-   background-color: rgba(0, 0, 0, 0.5);
-}
-.login-btn:hover{
-   font-size: 17px;
-   color:white;
-   background-color: rgba(0, 0, 0, 0.75);
-   /*border-color: #0073b7;*/
-}
 .interline{
 	margin-top: 15px;
 	font-size: 20px;
@@ -74,13 +18,6 @@ font-size: 45px;
 
 .highcharts-container {
 width: 100% !important
-}
-
-.login-box-body {
-
-	background-color: rgba(0, 0, 0, 0);
-    width: 150%;
-    margin-left: -25%;
 }
 
 .form-control {
@@ -97,7 +34,6 @@ h1.gradientbg {
 	background: -ms-linear-gradient(left,  #000053 0%,#d8d8d8 100%); /* IE10+ */
 	background: linear-gradient(to right,  #000053 0%,#d8d8d8 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000053', endColorstr='#d8d8d8',GradientType=1 ); /* IE6-9 */
-	/*font-family: 'Tenor Sans', sans-serif;*/
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	text-transform: uppercase;
@@ -111,7 +47,6 @@ h1.colorgray {
 	background: -ms-linear-gradient(left,  #dadada 0%,#d8d8d8 100%); /* IE10+ */
 	background: linear-gradient(to right,  #dadada 0%,#d8d8d8 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dadada', endColorstr='#d8d8d8',GradientType=1 ); /* IE6-9 */
-	/*font-family: 'Tenor Sans', sans-serif;*/
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	text-transform: uppercase;
@@ -126,7 +61,6 @@ h3.gradientbg {
 	background: -ms-linear-gradient(left,  #000053 0%,#000053 100%); /* IE10+ */
 	background: linear-gradient(to right,  #000053 0%,#000053 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000053', endColorstr='#000053',GradientType=1 ); /* IE6-9 */
-	/*font-family: 'Tenor Sans', sans-serif;*/
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	text-transform: uppercase;
@@ -135,11 +69,6 @@ h3.gradientbg {
 	text-transform: uppercase;
 	margin: 20px 0px 10px 0px;
 	padding: 0;
-}
-
-a {
-
-	color: #000053;
 }
 
 .twtrue{
@@ -169,13 +98,12 @@ a {
 }
 
 .content-container {
-	/*max-width: 1200px;*/
 	min-height: 600px;
 	background: #FFF;
 }
 
 .content, .content-header {
-	background-color: #FFF;
+	/*background-color: #FFF;*/
 }
 
 .content{
@@ -185,8 +113,6 @@ a {
 .navbar-static-top { /*_publicHeader.html & _appHeader.html*/
 	background: #000053;
 	border: none;
-	/*position: fixed;
-	width: 100%;*/
 }
 
 .navbar-static-top a{ /* _appHeader.html*/
@@ -288,100 +214,8 @@ a {
 		color: #484848 !important;
 	}
 
-	ul.sidebar-menu > li {
-		border-bottom: 1px solid #dadada;
-		border-color: #dadada !important;
-	}
-
-	ul.sidebar-menu > li:last-child {
-		border: none !important;
-	}
-
 	.treeview-menu.nav-second-level {
 		padding: 0 !important;
-	}
-
-	.sidebar-menu .treeview-menu > li > a {
-
-		padding: 12px 5px 12px 20px;
-
-	}
-
-.sidebar-menu {
-    border-top: 2px solid #dadada;
-    padding: 5px 0px;
-    /*text-align: center;*/
-}
-
-.sidebar-section p { /* Not found in html yet */
-		text-align: center;
-		color: #FFF;
-		margin: 10px;
-	}
-
-	.sidebar-section a { /* Not found in html yet */
-		text-decoration: underline;
-	}
-
-	.sidebar-section i { /* Not found in html yet */
-		color: #3c3c3c;
-	}
-
-	.sidebar-section h3 { /* Not found in html yet */
-		font-size: 16px;
-		text-transform: uppercase;
-		background: #dadada; /* Old browsers */
-		background: -moz-linear-gradient(left,  #dadada 0%, #d8d8d8 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#dadada), color-stop(100%,#d8d8d8)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(left,  #dadada 0%,#d8d8d8 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(left,  #dadada 0%,#d8d8d8 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(left,  #dadada 0%,#d8d8d8 100%); /* IE10+ */
-		background: linear-gradient(to right,  #dadada 0%,#d8d8d8 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dadada', endColorstr='#d8d8d8',GradientType=1 ); /* IE6-9 */
-		/*font-family: 'Tenor Sans', sans-serif;*/
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		margin: 10px;
-	}
-
-	.sidebar-section.similares { /* Not found in html yet */}
-
-		.sidebar-section.similares img { /* Not found in html yet */
-			margin: 0px 10px 20px 20px;
-			max-height: 60px;
-		}
-
-		.sidebar-section.similares p { /* Not found in html yet */
-			text-align: left;
-			margin: 0;
-		}
-
-		.sidebar-section.similares .vermas { /* Not found in html yet */
-			text-align: right;
-			margin-right: 30px;
-		}
-
-	.sidebar-section .vermas { /* Not found in html yet */
-		font-size: 12px;
-		text-align: right;
-	}
-
-.sidebar-bottom { /* Added to the bottom of sidebar */
-	color: #d4d4d4;
-	text-align: center;
-}
-
-	.sidebar-bottom a { /* Added to the bottom of sidebar */
-		color: #FFF;
-		text-decoration: none;
-	}
-
-	.sidebar-bottom img { /* Added to the bottom of sidebar */
-		margin-right: 15px;
-	}
-
-	.sidebar-bottom i { /* Added to the bottom of sidebar */
-		margin-right: 10px;
 	}
 
 h1.page-header {
@@ -497,10 +331,6 @@ hr.gradientbg {
 	border-radius: 0;
 }
 
-footer {
-	background-color: white;
-}
-
 footer p {
 	padding-top: 25px;
 	text-align: center;
@@ -536,29 +366,13 @@ footer p {
 	}
 }
 
-
+article.wrapper-article {
+	background: url(images/appBg.jpg) no-repeat center center fixed;
+}
 
 /*views*/
-.chartboxtitleleft {
-	background: #ececfb;
-    color: #000053;
-    display: block;
-	position: relative;
-	border-right-style: solid;
-    border-color: white;
-    border-right-width: 15px;
-    border-radius: 5px;
-}
-.chartboxtitleright {
-	background: #ececfb;
-    color: #000053;
-    display: block;
-	position: relative;
-	border-left-style: solid;
-    border-color: white;
-    border-left-width: 15px;
-    border-radius: 5px;
-}
+
+
 .chartboxh2 {
 	background: #000053;
     margin: 15px;
@@ -566,13 +380,27 @@ footer p {
 }
 
 .chartbox {
-	background: #ececfb;
+	background:rgba(255,255,255,0.1);
 	height: 342px;
-/*	display: block;
-	position: relative;*/
 	margin-bottom: 20px;
-	border-radius: 5px;
+	border-radius: 15px;
+	color: white;
 }
+
+	.chartbox.title {
+		height: 50px;
+		margin-bottom: 5px;
+		padding:2px;
+		margin-top: 15px;
+	}
+
+	.chartbox.title h2 span{
+		font-size: 12px;
+	}
+
+	.chartbox.chart{
+		height: inherit;margin-top: 15px;
+	}
 
 	.chartbox .pronto {
 		width: 100%;
@@ -587,10 +415,6 @@ footer p {
 		.fa {
 			transform: none;
 		}
-
-.stats-twitter .chartbox {
-	/*background-color: #CCE6FA;*/
-}
 
 	.chartbox .buttons {
 		text-align: center;
@@ -646,10 +470,6 @@ footer p {
 	.chartbox.interestbox p {
 		margin-top: 10px;
 		color: #000053;
-	}
-
-	.chartbox.interestbox.interestbrands p {
-		/*margin: 0;*/
 	}
 
 .chartbox.topfollowers {
@@ -724,11 +544,10 @@ footer p {
 		text-align: center;
 		font-size: 26px;
 		margin-top: 25px;
-		/*font-weight: bold;*/
 	}
 	.chartbox.single-number p.sm {
 		font-size: 20px;
-		color:#000053;
+		/*color:#000053;*/
 	}
 
 	.chartbox.single-number img {
@@ -842,51 +661,70 @@ footer p {
 		margin-left: 5px;
 	}
 
-
-
-.statistics {
-/*margin-bottom: 30px;*/
-}
-
 .statistics h2 {
-margin-top: 15px;
-margin-left: 5px;
-font-size: 25px
+	margin-top: 10px;
+	margin-left: 5px;
+	font-size: 25px
 }
 
-.statistics .title-social{
-margin: 15px;
-margin-bottom: 5px;
-}
+.statistics .title-social{margin: 15px;margin-bottom: 5px;}
 
-.statistics .col-md-4{
-padding-left: 2px;
-padding-right: 2px;
-}
+.statistics .col-md-4{padding-left: 2px;padding-right: 2px;}
 
-.statistics .col-md-4:first-child{
-padding-left: 15px;
-}
+.statistics .col-md-4:first-child{padding-left: 15px;}
 
-.statistics .col-md-4:last-child{
-padding-right: 15px;
-}
+.statistics .col-md-4:last-child{padding-right: 15px;}
 
 .statistics .col-md-4 h2.boxhome{
-font-size:18px;
-margin-bottom: 0;
+	font-size:15px;
+	text-align: center;
+	margin: 0;
+	margin-top: 5px;
 }
 
 .statistics .chartbox h3{
-font-size: 12px;
+	font-size: 10px;
+	color:white;
 }
 
-.statistics .chartbox .fa{
-color: #009999 !important;
+.statistics .chartbox .fa{color: #009999 !important;}
+
+.statistics .header-title{
+	background:rgba(255,255,255,0.1);
+	border-radius: 15px;
+	margin-left:0;
+	margin-right:0;
+}
+
+.statistics .header-title h2{color:white;}
+
+.statistics .header-title .social-icons{padding: 15px;color:white;}
+
+.statistics .header-title .social-icons i{font-size: 30px;}
+
+
+.rect[Attributes Style] {
+    height: 400;
+}
+
+rect {
+    opacity: 0;
+}
+
+.highcharts-background{
+	opacity: 0;
+}
+
+.highcharts-legend-item{
+	color: white;
+}
+
+.highcharts-legend-item text, .highcharts-axis-labels text{
+	fill:#FFFFFF !important;
 }
 
 .chartbox.single-number i {
-margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .panel-shown {
@@ -966,7 +804,7 @@ margin-bottom: 0;
 	}
 
 	.filterbox {
-		background: #ececfb;
+		background: transparent;
 		margin-bottom: 15px;
 	}
 
@@ -975,71 +813,23 @@ margin-bottom: 0;
 	}
 
 	.filterbox .input-group {
-		margin: 0px 25px 10px 25px;
+		/*margin: 0px 25px 10px 25px;*/
+		margin: 15px 5px;
 	}
 
-	.filterbox p.socialicons {
-		margin: 0px 0px 0px 25px;
+	.filterbox p.social-icons {
+		margin: 15px 5px;
 	}
 
-	.filterbox p.socialicons i {
+	.filterbox p.social-icons i {
 		font-size: 30px;
 		margin-right: 10px;
 	}
 
-	.filterbox p.socialicons a {
+	.filterbox p.social-icons a {
 		color: #484848;
 	}
 
-
-/* isotope */
-
-.element-item img{
-	width:100%;
-}
-
-.element-item .title{
-	position:absolute;
-	top:0;
-	/*padding-left:10px;*/
-	/*text-shadow: 1px 1px #FFF;*/
-	/*font-weight: bold;*/
-}
-
-.element-item .title h2, .element-item .title h3{
-	
-	padding-left:10px;
-	padding-right:2px;
-	background-color: #000053;
-	color: white;
-	display:inline-block;
-}
-
-.element-item .title h2{font-size: 1.7em;}
-.element-item .title h3{font-size: 1.3em;}
-
-.element-item .body{
-	background:#EEE;
-	/*padding:10px;*/
-	color: #000053;
-	height: 150px;
-}
-
-.element-item .body > div{
-	/*background:#EEE;*/
-	padding:10px;
-	/*color: #000053;*/
-}
-
-.element-item .body p{
-	margin: 0px 0px 5px;
-	font-size: 1.1em;
-}
-
-.element-item .body .fa-twitter-square, .element-item .body .fa-instagram {
-	font-size: 1.3em;
-}
-
-/*.element-item .body > div.instagram{
-	text-align: right;
-}*/
+	.filterbox button{
+		margin-top: 15px;
+	}

@@ -117,17 +117,16 @@ Template.homeInfluencer.helpers({
         var screenname = user[0].services.twitter.screenName;
         return screenname;
     },
-     lastupdatetw: function () {
 
+    lastupdatetw: function () {
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
-        // var twitteraccount = profile[0].twitteracccount;
         var screenname = Meteor.user().services.twitter.screenName;
         var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
         var date = datatwitter[0].profilestatistics[0].lastupdate;
         return moment(date).format('DD-MM-YYYY HH:mm');
     },
-    lastupdateinsta: function () {
 
+    lastupdateinsta: function () {
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
         var screenname = Meteor.user().services.instagram.username;
         var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
@@ -136,20 +135,20 @@ Template.homeInfluencer.helpers({
     }, 
 
     datatwitter: function () {
-
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
         // var twitteraccount = profile[0].twitteracccount;
         var screenname = Meteor.user().services.twitter.screenName;
         var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
         return datatwitter[0]
     },
-    datainstagram: function () {
 
+    datainstagram: function () {
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
         var screenname = Meteor.user().services.instagram.username;
         var datainstagram = DataInstagram.find({screenname:screenname}).fetch();
         return datainstagram[0]
     },
+
     text: function () {
 
         var profile = Profile.find({userId:Meteor.userId()}).fetch();
