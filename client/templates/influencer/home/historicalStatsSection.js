@@ -407,59 +407,60 @@ Template.wordcloudinstagram.rendered = function() {
 
 };
 
-Template.historicalStatsSection.wctw = function() {
+Template.wordcloudtw.rendered = function() {
 
-     var data = new Array();
-         var screenname = Meteor.user().services.twitter.screenName;
-         var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
-         var wordcloud = datatwitter[0].profileHistorical[0].WordCloud;
-         // 'external' data
-         var len = wordcloud.length;
+
+    //  var data = new Array();
+    //      var screenname = Meteor.user().services.twitter.screenName;
+    //      var datatwitter = DataTwitter.find({screenname:screenname}).fetch();
+    //      var wordcloud = datatwitter[0].profileHistorical[0].WordCloud;
+    //      // 'external' data
+    //      var len = wordcloud.length;
      
-    for (i = 0; i < len; i++) { 
-     data.push({
-        name: wordcloud[i]._word,
-        y: wordcloud[i]._count,
-        color: '#009999'
-    });
+    // for (i = 0; i < len; i++) { 
+    //  data.push({
+    //     name: wordcloud[i]._word,
+    //     y: wordcloud[i]._count,
+    //     color: '#009999'
+    // });
 
-    }
+    // }
 
-    return {
-        chart: {
-            plotBackgroundColor: '#ececfb',
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: ''
-        },
-        credits: {
-            enabled: false
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
-            }
-        },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: data,
-        }]
-    };
+    // return {
+    //     chart: {
+    //         plotBackgroundColor: '#ececfb',
+    //         plotBorderWidth: null,
+    //         plotShadow: false,
+    //         type: 'pie'
+    //     },
+    //     title: {
+    //         text: ''
+    //     },
+    //     credits: {
+    //         enabled: false
+    //     },
+    //     tooltip: {
+    //         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    //     },
+    //     plotOptions: {
+    //         pie: {
+    //             allowPointSelect: true,
+    //             cursor: 'pointer',
+    //             dataLabels: {
+    //                 enabled: true,
+    //                 format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+    //                 style: {
+    //                     color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+    //                 }
+    //             }
+    //         }
+    //     },
+    //     series: [{
+    //         name: 'Brands',
+    //         colorByPoint: true,
+    //         data: data,
+    //     }]
+    // };
 };
 Template.historicalStatsSection.wcinsta = function() {
 

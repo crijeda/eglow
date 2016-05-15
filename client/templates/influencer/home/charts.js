@@ -1,117 +1,117 @@
 
-function builtLine(HistoricalData, service) {
+// function builtLine(HistoricalData, service) {
 
-    var width = $(".visible-lg").width();
+//     var width = $(".visible-lg").width();
 
-    $(window).resize(function() {
+//     $(window).resize(function() {
  
-       var width = $(".visible-lg").width();
+//        var width = $(".visible-lg").width();
 
-        $(Highcharts.charts).each(function(i,chart){
-            chart.setSize(width, 300); 
+//         $(Highcharts.charts).each(function(i,chart){
+//             chart.setSize(width, 300); 
             
-        });   
-    });
+//         });   
+//     });
 
-    responseDates = _.pluck(HistoricalData,'Date')
+//     responseDates = _.pluck(HistoricalData,'Date')
 
-    xAxisDates = _.map(responseDates,function(e){
-        return e.substring(8, 10) + "/" + e.substring(5, 7) + "/" +  e.substring(0, 4)
-    })
+//     xAxisDates = _.map(responseDates,function(e){
+//         return e.substring(8, 10) + "/" + e.substring(5, 7) + "/" +  e.substring(0, 4)
+//     })
 
-    if ( service == "Twitter" ){
-        dataSeries = [
-            {
-                name: 'Followers',
-                color: '#5BC0DE',
-                // data: [12, 15, 25, 27, 10, 6, 5]
-                data: _.pluck(HistoricalData,'followers_count')
+//     if ( service == "Twitter" ){
+//         dataSeries = [
+//             {
+//                 name: 'Followers',
+//                 color: '#5BC0DE',
+//                 // data: [12, 15, 25, 27, 10, 6, 5]
+//                 data: _.pluck(HistoricalData,'followers_count')
 
-            }, {
-                name: 'Favorites',
-                color: '#D9534F',
-                data: _.pluck(HistoricalData,'favorites_count')
-            }
-        ];
+//             }, {
+//                 name: 'Favorites',
+//                 color: '#D9534F',
+//                 data: _.pluck(HistoricalData,'favorites_count')
+//             }
+//         ];
 
-        divId = '#container-line-twitter'
-    }
+//         divId = '#container-line-twitter'
+//     }
 
-    if ( service == "Instagram" ){
-        dataSeries = [
-            {
-                name: 'Followers',
-                color: '#5BC0DE',
-                // data: [12, 15, 25, 27, 10, 6, 5]
-                data: _.pluck(HistoricalData,'followers_count')
+//     if ( service == "Instagram" ){
+//         dataSeries = [
+//             {
+//                 name: 'Followers',
+//                 color: '#5BC0DE',
+//                 // data: [12, 15, 25, 27, 10, 6, 5]
+//                 data: _.pluck(HistoricalData,'followers_count')
 
-            }, {
-                name: 'Likes',
-                color: '#D9534F',
-                data: _.pluck(HistoricalData,'likes_count')
-            }
-        ];
+//             }, {
+//                 name: 'Likes',
+//                 color: '#D9534F',
+//                 data: _.pluck(HistoricalData,'likes_count')
+//             }
+//         ];
 
-        divId = '#container-line-instagram'
-    }
+//         divId = '#container-line-instagram'
+//     }
 
-    $(divId).highcharts({
+//     $(divId).highcharts({
         
-        chart: {
-            type: 'line',
-            plotBackgroundColor: "",
-            //margin: 0,
-            width:width,
+//         chart: {
+//             type: 'line',
+//             plotBackgroundColor: "",
+//             //margin: 0,
+//             width:width,
 
-        },
+//         },
         
-        title: {
-            text: ''
-        },
+//         title: {
+//             text: ''
+//         },
         
-        credits: {
-            enabled: false
-        },
+//         credits: {
+//             enabled: false
+//         },
         
-        xAxis: {
-            categories: xAxisDates,
-        },
+//         xAxis: {
+//             categories: xAxisDates,
+//         },
         
-        yAxis: {
-            title: {
-                text: ''
-            }
-        },
+//         yAxis: {
+//             title: {
+//                 text: ''
+//             }
+//         },
                 
-        series: dataSeries
+//         series: dataSeries
 
-    });
-}
+//     });
+// }
 
 /*
  * Call the function to built the chart when the template is rendered
  */
-Template.lineHistoricalTwitter.rendered = function() {
+// Template.lineHistoricalTwitter.rendered = function() {
     
-    var user = Meteor.users.find({_id:Meteor.userId()}).fetch()
-    var datatwitter = DataTwitter.find({screenname:user[0].services.twitter.screenName}).fetch();
-    var HistoricalData = datatwitter[0].profileHistorical[0].HistoricalData;
-    builtLine(HistoricalData,"Twitter");
+//     var user = Meteor.users.find({_id:Meteor.userId()}).fetch()
+//     var datatwitter = DataTwitter.find({screenname:user[0].services.twitter.screenName}).fetch();
+//     var HistoricalData = datatwitter[0].profileHistorical[0].HistoricalData;
+//     builtLine(HistoricalData,"Twitter");
 
-    $(window).resize();
+//     $(window).resize();
 
-}
+// }
 
-Template.lineHistoricalInstagram.rendered = function() {
+// Template.lineHistoricalInstagram.rendered = function() {
 
-    var user = Meteor.users.find({_id:Meteor.userId()}).fetch()
-    var dataintagram = DataInstagram.find({screenname:user[0].services.instagram.username}).fetch();
-    var HistoricalData = dataintagram[0].profileHistorical[0].HistoricalData;
-    builtLine(HistoricalData,"Instagram");
+//     var user = Meteor.users.find({_id:Meteor.userId()}).fetch()
+//     var dataintagram = DataInstagram.find({screenname:user[0].services.instagram.username}).fetch();
+//     var HistoricalData = dataintagram[0].profileHistorical[0].HistoricalData;
+//     builtLine(HistoricalData,"Instagram");
 
-    $(window).resize();
+//     $(window).resize();
 
-}
+// }
 
 // var basicChart = {
 //         chart: {
